@@ -4,10 +4,6 @@ import org.scalatest.FunSuite
 
 
 class LastFmRatingTest extends FunSuite {
-  test("qw") {
-    LastFmRating("12")
-  }
-
   test("+") {
     assert(LastFmRating("UNKNOWN YET!", 3) === LastFmRating("name1", 1) + LastFmRating("name2", 2))
   }
