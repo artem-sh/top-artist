@@ -4,7 +4,7 @@ import sh.topartist.rating.Rating
 
 
 case class PromodjRuRating(promoRank: Int) extends Rating {
-  override def +(that: Rating): Rating =
+  override def +(that: Rating): PromodjRuRating =
     new PromodjRuRating(this.promoRank + that.asInstanceOf[PromodjRuRating].promoRank)
 
   override def compare(that: Rating) = this.promoRank - that.asInstanceOf[PromodjRuRating].promoRank
