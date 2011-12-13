@@ -9,7 +9,7 @@ import PromodjRuParser._
 class PromodjRuParserTest extends FunSuite {
 
   test("parseDjUrl() with 'promodj-search-Loveski.htm' on input") {
-    val url = getClass.getResource("promodj-search-Loveski.htm")
+    val url = getClass.getResource("/sh/topartist/rating/promodjru/promodj-search-Loveski.htm")
     val doc = Jsoup.parse(new File(url.toURI), "UTF-8")
 
     assert("http://djloveski.promodj.ru/" === parseDjUrl("loveski", doc).getOrElse(fail("Nothing!")))
@@ -62,7 +62,7 @@ class PromodjRuParserTest extends FunSuite {
   }
 
   test("parseDjPromoRank() with 'djloveski.promodj.ru.htm' on input") {
-    val url = getClass.getResource("djloveski.promodj.ru.htm")
+    val url = getClass.getResource("/sh/topartist/rating/promodjru/djloveski.promodj.ru.htm")
     val doc = Jsoup.parse(new File(url.toURI), "UTF-8")
 
     assert(2177 === parseDjPromoRank(doc).getOrElse(fail("Nothing!")))
