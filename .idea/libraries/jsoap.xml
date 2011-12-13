@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="jsoap">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib_managed/jars/org.jsoup/jsoup/jsoup-1.6.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/lib_managed/srcs/org.jsoup/jsoup/jsoup-1.6.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

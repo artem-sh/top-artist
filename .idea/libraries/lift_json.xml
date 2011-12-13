@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="lift-json">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib_managed/jars/net.liftweb/lift-json_2.9.1/lift-json_2.9.1-2.4-M4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib_managed/jars/com.thoughtworks.paranamer/paranamer/paranamer-2.3.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/lib_managed/srcs/net.liftweb/lift-json_2.9.1/lift-json_2.9.1-2.4-M4-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
