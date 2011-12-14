@@ -9,18 +9,22 @@ class TotalRatingTest extends FunSuite {
   val totalRating = new TotalRating
 
   test("setLastFmRating()") {
-    totalRating.lastFmRating = new LastFmRating("Vakulenko", 123)
+    val lfr1 = new LastFmRating("Vakulenko", 123)
+    totalRating.lastFmRating = lfr1
+    assert(lfr1 === totalRating.lastFmRating)
 
-    intercept[IllegalArgumentException] {
-      totalRating.lastFmRating = new LastFmRating("Vakulenko", 123)
-    }
+    val lfr2 = new LastFmRating("Vakulenko", 321)
+    totalRating.lastFmRating = lfr2
+    assert(lfr2 === totalRating.lastFmRating)
   }
 
   test("setPromodjRuRating()") {
-    totalRating.promodjRuRating = new PromodjRuRating(123)
+    val pdr1 = new PromodjRuRating(123)
+    totalRating.promodjRuRating = pdr1
+    assert(pdr1 === totalRating.promodjRuRating)
 
-    intercept[IllegalArgumentException] {
-      totalRating.promodjRuRating = new PromodjRuRating(123)
-    }
+    val pdr2 = new PromodjRuRating(12)
+    totalRating.promodjRuRating = pdr2
+    assert(pdr2 === totalRating.promodjRuRating)
   }
 }
