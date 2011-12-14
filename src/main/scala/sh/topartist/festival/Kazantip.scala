@@ -1,66 +1,38 @@
 package sh.topartist.festival
 
-import sh.topartist.util.raisin.Raisin._
 import sh.topartist.festival.parser.Kazantip19LineUpParser
 import sh.topartist.rating.Rating
 import sh.topartist.rating.lastfm.{LastFmRating, LastFmRetriever}
 import sh.topartist.util.ArtistUtil
 import scala.collection.mutable.ListBuffer
-import sh.topartist.Artist
-import sh.topartist.rating.promodjru.PromodjRuRetriever
+import sh.topartist.{LineUp, Artist}
+import sh.topartist.rating.promodjru.{PromodjRuRating, PromodjRuRetriever}
 
 
 trait FestivalValuer {
-  def rateArtists()
+  def rateArtists(lineUpContent: String, lastFmRetriever: LastFmRetriever, promodjRuRetriever: PromodjRuRetriever): LineUp
 }
 
 object Kazantip extends FestivalValuer {
-  val lineUpStrWithDoubledArtists = """31,07 - Cosmonaut (SUNSET Point )
-5,08 - Loveski (SUNSET Point )
-5,08 - Soundwalk Collective (MAIN) PRE- PREMIER
-6,08 - Pendulum DJ set + MC WREK (MAIN STAGE) OPENING CEREMONY
-6,08 - R-TEM (MAIN STAGE) OPENING CEREMONY
-6,08 - Cosmonaut (MAIN STAGE) OPENING CEREMONY
-6,08 - NILS (MAIN STAGE) OPENING CEREMONY
-6,08 - FEEL (MAIN STAGE) OPENING CEREMONY
-20,08 - Groove Armada / ANDY CATO (MAIN STAGE) CLOSING PARTY
-20,08 - Bobina (MAIN STAGE) CLOSING PARTY
-20,08 - Ricardo Villalobos (CROISSANT) ARMA / COCOON
-21,08 - Ricardo Villalobos (SUNSET) point"""
-
-  val lineUpStr = """31,07 - Cosmonaut (SUNSET Point )
-5,08 - Loveski (SUNSET Point )
-6,08 - R-TEM (MAIN STAGE) OPENING CEREMONY
-6,08 - Cosmonaut (MAIN STAGE) OPENING CEREMONY
-6,08 - NILS (MAIN STAGE) OPENING CEREMONY
-6,08 - FEEL (MAIN STAGE) OPENING CEREMONY
-20,08 - Bobina (MAIN STAGE) CLOSING PARTY"""
-
-
-  def main(args: Array[String]) {
-    rateArtists()
-  }
-
-  override def rateArtists() {
-    val lineUp = new Kazantip19LineUpParser().parseLineUp(lineUpStr)
+  override def rateArtists(lineUpContent: String, lastFmRetriever: LastFmRetriever, promodjRuRetriever: PromodjRuRetriever): LineUp = {
+    val lineUp = new Kazantip19LineUpParser().parseLineUp(lineUpContent)
     val artists = new ListBuffer[Artist]
 
-    using(new LastFmRetriever, new PromodjRuRetriever) {
-      (lRetriever, pRetriever) =>
-        lineUp.getArtists.foreach(artist => {
-          ArtistUtil.splitArtists(artist.name).foreach(name => {
-            artist.totalRating.lastFmRating = artist.totalRating.lastFmRating.get + rateWithLastFm(artist.name, lRetriever)
-            artist.totalRating.promodjRuRating = artist.totalRating.promodjRuRating.get + rateWithPromodjRu(artist.name, pRetriever)
-          })
-          println(artist)
-          artists += artist
-        })
-    }
+    lineUp.artists.foreach(artist => {
+      ArtistUtil.splitArtists(artist.name).foreach(name => {
+        artist.totalRating.lastFmRating = artist.totalRating.lastFmRating + rateWithLastFm(name, lastFmRetriever)
+        artist.totalRating.promodjRuRating = artist.totalRating.promodjRuRating + rateWithPromodjRu(name, promodjRuRetriever)
+      })
+      println(artist)
+      artists += artist
+    })
 
-    println(artists)
+    lineUp
   }
 
-  private def rateWithLastFm(name: String, lastFmRetriever: LastFmRetriever): Rating = {
+  private def rateWithLastFm(name: String, lastFmRetriever: LastFmRetriever): LastFmRating = {
+    println("Trying to rate with last.fm artist " + name)
+
     val djName = if (name.toLowerCase.startsWith("dj")) name else "dj " + name
     println("Trying to search artist " + djName)
     val djLastFmRating = lastFmRetriever.retrieveRating(djName)
@@ -76,8 +48,8 @@ object Kazantip extends FestivalValuer {
     if (normalizeRating(djLastFmRating, djName) > normalizeRating(lastFmRating, artistName)) djLastFmRating else lastFmRating
   }
 
-  private def rateWithPromodjRu(name: String, retriever: PromodjRuRetriever): Rating = {
-    println("Trying to search artist " + name)
+  private def rateWithPromodjRu(name: String, retriever: PromodjRuRetriever): PromodjRuRating = {
+    println("Trying to rate with promodj.ru artist " + name)
     retriever.retrieveRating(name)
   }
 

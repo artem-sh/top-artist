@@ -4,7 +4,6 @@ import org.scalatest.FunSuite
 
 
 class PromodjRuRatingTest extends FunSuite {
-
   test("+") {
     assert(PromodjRuRating(3) === PromodjRuRating(1) + PromodjRuRating(2))
   }

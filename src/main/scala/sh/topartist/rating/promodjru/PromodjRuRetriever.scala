@@ -3,7 +3,7 @@ package sh.topartist.rating.promodjru
 import org.jsoup.Jsoup
 import sh.topartist.util.raisin.Disposable
 import dispatch._
-import sh.topartist.rating.{Rating, RatingRetriever}
+import sh.topartist.rating.RatingRetriever
 
 
 class PromodjRuRetriever extends RatingRetriever with Disposable {
@@ -14,7 +14,7 @@ class PromodjRuRetriever extends RatingRetriever with Disposable {
     PromodjRuParser.parseDjUrl(artistName, Jsoup.parse(httpHandler(request as_str)))
   }
 
-  override  def retrieveRating(artistName: String): Rating = {
+  override  def retrieveRating(artistName: String): PromodjRuRating = {
     findDjPageUrl(artistName) match {
       case Some(djPageUrl) => {
         val request = url(djPageUrl)
