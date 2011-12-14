@@ -13,8 +13,8 @@ class LineUpTest extends FunSuite {
     assert(artist === lineUp.getArtist(artistName))
   }
 
-  test("getArtists()") {
-    val artists = lineUp.getArtists
+  test("artists()") {
+    val artists = lineUp.artists
     assert(1 === artists.size)
     assert(artist === artists.iterator.next())
   }
