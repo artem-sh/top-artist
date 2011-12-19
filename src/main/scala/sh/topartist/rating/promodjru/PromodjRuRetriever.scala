@@ -10,7 +10,7 @@ class PromodjRuRetriever extends RatingRetriever with Disposable {
   val httpHandler = new Http
 
   def findDjPageUrl(artistName: String): Option[String] = {
-    val request = url("http://promodj.ru/search/?mode=user&sortby=rating&searchfor=" + artistName)
+    val request = url("http://promodj.ru/search/?mode=user&sortby=rating&searchfor=" + Request.encode_%(artistName))
     PromodjRuParser.parseDjUrl(artistName, Jsoup.parse(httpHandler(request as_str)))
   }
 
