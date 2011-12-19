@@ -40,6 +40,17 @@ class ArtistTest extends FunSuite {
     assert(List(a1, a1, a10) === List(a10, a1, a1).sorted)
   }
 
+  test("desceding sort (by lastFmRating)") {
+    val a5 = createArtist(5)
+    val a1 = createArtist(1)
+    val a10 = createArtist(10)
+
+    assert(List(a10, a5, a1) === List(a5, a1, a10).sortWith(_ > _))
+    assert(List(a10, a5, a1) === List(a1, a10, a5).sortWith(_ > _))
+    assert(List(a10, a5, a1) === List(a10, a5, a1).sortWith(_ > _))
+    assert(List(a10, a1, a1) === List(a10, a1, a1).sortWith(_ > _))
+  }
+
   test("compareByPromodjRuRating()") {
     val artist1 = new Artist("a1")
     artist1.totalRating.promodjRuRating = PromodjRuRating(10)
