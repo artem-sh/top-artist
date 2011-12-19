@@ -1,11 +1,9 @@
 package sh.topartist.festival
 
 import sh.topartist.festival.parser.Kazantip19LineUpParser
-import sh.topartist.rating.Rating
 import sh.topartist.rating.lastfm.{LastFmRating, LastFmRetriever}
 import sh.topartist.util.ArtistUtil
-import scala.collection.mutable.ListBuffer
-import sh.topartist.{LineUp, Artist}
+import sh.topartist.LineUp
 import sh.topartist.rating.promodjru.{PromodjRuRating, PromodjRuRetriever}
 
 
@@ -16,15 +14,12 @@ trait FestivalValuer {
 object Kazantip extends FestivalValuer {
   override def rateArtists(lineUpContent: String, lastFmRetriever: LastFmRetriever, promodjRuRetriever: PromodjRuRetriever): LineUp = {
     val lineUp = new Kazantip19LineUpParser().parseLineUp(lineUpContent)
-    val artists = new ListBuffer[Artist]
 
     lineUp.artists.foreach(artist => {
       ArtistUtil.splitArtists(artist.name).foreach(name => {
         artist.totalRating.lastFmRating = artist.totalRating.lastFmRating + rateWithLastFm(name, lastFmRetriever)
         artist.totalRating.promodjRuRating = artist.totalRating.promodjRuRating + rateWithPromodjRu(name, promodjRuRetriever)
       })
-      println(artist)
-      artists += artist
     })
 
     lineUp

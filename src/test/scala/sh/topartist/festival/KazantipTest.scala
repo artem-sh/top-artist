@@ -20,7 +20,7 @@ class KazantipTest extends FunSuite with MockitoSugar {
   20,08 - Ricardo Villalobos (CROISSANT) ARMA / COCOON
   21,08 - Ricardo Villalobos (SUNSET) point"""
 
-  ignore("rateArtists()") {
+  test("rateArtists()") {
     val lineUpStr = """31,07 - Cosmonaut (SUNSET Point )
     6,08 - Pendulum + MC WREK (MAIN STAGE) OPENING CEREMONY
     20,08 - Groove Armada / ANDY CATO (MAIN STAGE) CLOSING PARTY"""
@@ -44,12 +44,11 @@ class KazantipTest extends FunSuite with MockitoSugar {
     when(promodjRuRetrieverMock.retrieveRating("Groove Armada")).thenReturn(new PromodjRuRating(500))
     when(promodjRuRetrieverMock.retrieveRating("ANDY CATO")).thenReturn(new PromodjRuRating(300))
 
-
     val lineUp = Kazantip.rateArtists(lineUpStr, lastFmRetrieverMock, promodjRuRetrieverMock)
     val sortedArtists = lineUp.artists.sorted
     assert(3 === sortedArtists.size)
-    assert("Pendulum + MC WREK" === sortedArtists(0).name)
+    assert("Groove Armada / ANDY CATO" === sortedArtists(0).name)
     assert("Cosmonaut" === sortedArtists(1).name)
-    assert("Groove Armada / ANDY CATO" === sortedArtists(2).name)
+    assert("Pendulum + MC WREK" === sortedArtists(2).name)
   }
 }
