@@ -47,13 +47,4 @@ object Kazantip extends FestivalValuer {
     println("Trying to rate with promodj.ru artist " + name)
     retriever.retrieveRating(name)
   }
-
-
-  private def artistNameAsDjNik(name: String) = {
-    if (name.toLowerCase.startsWith("dj")) name else "dj " + name
-  }
-
-  private def artistNameWithoutDjPefix(name: String) = {
-    if (name.toLowerCase.startsWith("dj")) name.drop(2) else name
-  }
 }
