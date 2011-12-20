@@ -1,0 +1,2 @@
+- uncomment VkontakteRuParserTest tests and implement VkontakteRuParser
+-? introduce common interface for rating parsers
