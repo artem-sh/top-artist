@@ -29,11 +29,11 @@ object Kazantip extends FestivalValuer {
     println("Trying to rate with last.fm artist " + name)
 
     val djName = if (name.toLowerCase.startsWith("dj")) name else "dj " + name
-    println("Trying to search artist " + djName)
+    println("Trying to search artist (as dj)" + djName)
     val djLastFmRating = lastFmRetriever.retrieveRating(djName)
 
     val artistName = if (name.toLowerCase.startsWith("dj")) name.drop(2) else name
-    println("Trying to search artist " + artistName)
+    println("Trying to search artist (simply)" + artistName)
     val lastFmRating = lastFmRetriever.retrieveRating(name)
 
     def normalizeRating(rating: LastFmRating, name: String): LastFmRating = {
