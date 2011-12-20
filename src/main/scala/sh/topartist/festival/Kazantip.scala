@@ -11,6 +11,7 @@ trait FestivalValuer {
   def rateArtists(lineUpContent: String, lastFmRetriever: LastFmRetriever, promodjRuRetriever: PromodjRuRetriever): LineUp
 }
 
+
 object Kazantip extends FestivalValuer {
   override def rateArtists(lineUpContent: String, lastFmRetriever: LastFmRetriever, promodjRuRetriever: PromodjRuRetriever): LineUp = {
     val lineUp = new Kazantip19LineUpParser().parseLineUp(lineUpContent)

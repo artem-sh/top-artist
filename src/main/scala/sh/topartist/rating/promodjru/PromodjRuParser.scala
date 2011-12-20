@@ -2,6 +2,8 @@ package sh.topartist.rating.promodjru
 
 import org.jsoup.nodes.Document
 import scala.collection.JavaConversions._
+
+
 object PromodjRuParser {
   def parseDjUrl(artistName: String, doc: Document): Option[String] = {
     val elements = doc.select("a.avatar")
