@@ -3,6 +3,7 @@ package sh.topartist.rating
 import lastfm.LastFmRating
 import org.scalatest.FunSuite
 import promodjru.PromodjRuRating
+import sh.topartist.rating.vkontakteru.VkontakteRuRating
 
 
 class TotalRatingTest extends FunSuite {
@@ -26,5 +27,15 @@ class TotalRatingTest extends FunSuite {
     val pdr2 = PromodjRuRating(12)
     totalRating.promodjRuRating = pdr2
     assert(pdr2 === totalRating.promodjRuRating)
+  }
+
+  test("vkontakteRuRating getter/setter") {
+    val vkr1 = VkontakteRuRating(123)
+    totalRating.vkontakteRuRating = vkr1
+    assert(vkr1 === totalRating.vkontakteRuRating)
+
+    val vkr2 = VkontakteRuRating(13)
+    totalRating.vkontakteRuRating = vkr2
+    assert(vkr2 === totalRating.vkontakteRuRating)
   }
 }
