@@ -8,4 +8,8 @@ object JsonUtil {
     implicit val formats = Serialization.formats(NoTypeHints)
     json.extract[String]
   }
+
+  def extractIntValue(json: JValue): Int = {
+    extractStringValue(json).toInt
+  }
 }
