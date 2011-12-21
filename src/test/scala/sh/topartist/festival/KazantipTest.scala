@@ -3,8 +3,9 @@ package sh.topartist.festival
 import org.scalatest.FunSuite
 import org.scalatest.mock.MockitoSugar
 import org.mockito.Mockito._
-import sh.topartist.rating.lastfm.{LastFmRating, LastFmRetriever}
 import sh.topartist.rating.promodjru.{PromodjRuRating, PromodjRuRetriever}
+import sh.topartist.rating.lastfm.{LastFmRating, LastFmRetriever}
+import sh.topartist.rating.vkontakteru.{VkontakteRuRating, VkontakteRuRetriever}
 
 
 class KazantipTest extends FunSuite with MockitoSugar {
@@ -25,31 +26,46 @@ class KazantipTest extends FunSuite with MockitoSugar {
     val lineUpStr = """31,07 - Cosmonaut (SUNSET Point )
     6,08 - Pendulum + MC WREK (MAIN STAGE) OPENING CEREMONY
     20,08 - Groove Armada / ANDY CATO (MAIN STAGE) CLOSING PARTY"""
-
-    val lastFmRetrieverMock = mock[LastFmRetriever]
-    when(lastFmRetrieverMock.retrieveRating("Cosmonaut")).thenReturn(LastFmRating("Cosmonaut", 100))
-    when(lastFmRetrieverMock.retrieveRating("dj Cosmonaut")).thenReturn(LastFmRating("dj Cosmonaut", 0))
-    when(lastFmRetrieverMock.retrieveRating("Pendulum")).thenReturn(LastFmRating("Pendulum", 200))
-    when(lastFmRetrieverMock.retrieveRating("dj Pendulum")).thenReturn(LastFmRating("dj Pendulum", 0))
-    when(lastFmRetrieverMock.retrieveRating("MC WREK")).thenReturn(LastFmRating("MC WREK", 10))
-    when(lastFmRetrieverMock.retrieveRating("dj MC WREK")).thenReturn(LastFmRating("dj MC WREK", 0))
-    when(lastFmRetrieverMock.retrieveRating("Groove Armada")).thenReturn(LastFmRating("Groove Armada", 50))
-    when(lastFmRetrieverMock.retrieveRating("dj Groove Armada")).thenReturn(LastFmRating("dj Groove Armada", 0))
-    when(lastFmRetrieverMock.retrieveRating("ANDY CATO")).thenReturn(LastFmRating("ANDY CATO", 30))
-    when(lastFmRetrieverMock.retrieveRating("dj ANDY CATO")).thenReturn(LastFmRating("dj ANDY CATO", 0))
-
-    val promodjRuRetrieverMock = mock[PromodjRuRetriever]
-    when(promodjRuRetrieverMock.retrieveRating("Cosmonaut")).thenReturn(PromodjRuRating(1000))
-    when(promodjRuRetrieverMock.retrieveRating("Pendulum")).thenReturn(PromodjRuRating(2000))
-    when(promodjRuRetrieverMock.retrieveRating("MC WREK")).thenReturn(PromodjRuRating(100))
-    when(promodjRuRetrieverMock.retrieveRating("Groove Armada")).thenReturn(PromodjRuRating(500))
-    when(promodjRuRetrieverMock.retrieveRating("ANDY CATO")).thenReturn(PromodjRuRating(300))
-
-    val lineUp = Kazantip.rateArtists(lineUpStr, lastFmRetrieverMock, promodjRuRetrieverMock)
+    val lineUp = Kazantip.rateArtists(lineUpStr, createLastFmRetrieverMock, createPromodjRuRetrieverMock, createVkontakteRuRetrieverMock)
     val sortedArtists = lineUp.artists.sorted
     assert(3 === sortedArtists.size)
     assert("Groove Armada / ANDY CATO" === sortedArtists(0).name)
     assert("Cosmonaut" === sortedArtists(1).name)
     assert("Pendulum + MC WREK" === sortedArtists(2).name)
+  }
+
+  private def createLastFmRetrieverMock: LastFmRetriever = {
+    val retriever = mock[LastFmRetriever]
+    when(retriever.retrieveRating("Cosmonaut")).thenReturn(LastFmRating("Cosmonaut", 100))
+    when(retriever.retrieveRating("dj Cosmonaut")).thenReturn(LastFmRating("dj Cosmonaut", 0))
+    when(retriever.retrieveRating("Pendulum")).thenReturn(LastFmRating("Pendulum", 200))
+    when(retriever.retrieveRating("dj Pendulum")).thenReturn(LastFmRating("dj Pendulum", 0))
+    when(retriever.retrieveRating("MC WREK")).thenReturn(LastFmRating("MC WREK", 10))
+    when(retriever.retrieveRating("dj MC WREK")).thenReturn(LastFmRating("dj MC WREK", 0))
+    when(retriever.retrieveRating("Groove Armada")).thenReturn(LastFmRating("Groove Armada", 50))
+    when(retriever.retrieveRating("dj Groove Armada")).thenReturn(LastFmRating("dj Groove Armada", 0))
+    when(retriever.retrieveRating("ANDY CATO")).thenReturn(LastFmRating("ANDY CATO", 30))
+    when(retriever.retrieveRating("dj ANDY CATO")).thenReturn(LastFmRating("dj ANDY CATO", 0))
+    retriever
+  }
+
+  private def createPromodjRuRetrieverMock: PromodjRuRetriever = {
+    val retriever = mock[PromodjRuRetriever]
+    when(retriever.retrieveRating("Cosmonaut")).thenReturn(PromodjRuRating(1000))
+    when(retriever.retrieveRating("Pendulum")).thenReturn(PromodjRuRating(2000))
+    when(retriever.retrieveRating("MC WREK")).thenReturn(PromodjRuRating(100))
+    when(retriever.retrieveRating("Groove Armada")).thenReturn(PromodjRuRating(500))
+    when(retriever.retrieveRating("ANDY CATO")).thenReturn(PromodjRuRating(300))
+    retriever
+  }
+
+  private def createVkontakteRuRetrieverMock: VkontakteRuRetriever = {
+    val retriever = mock[VkontakteRuRetriever]
+    when(retriever.retrieveRating("Cosmonaut")).thenReturn(VkontakteRuRating(10000))
+    when(retriever.retrieveRating("Pendulum")).thenReturn(VkontakteRuRating(20000))
+    when(retriever.retrieveRating("MC WREK")).thenReturn(VkontakteRuRating(1000))
+    when(retriever.retrieveRating("Groove Armada")).thenReturn(VkontakteRuRating(5000))
+    when(retriever.retrieveRating("ANDY CATO")).thenReturn(VkontakteRuRating(3000))
+    retriever
   }
 }

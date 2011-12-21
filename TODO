@@ -1,3 +1,6 @@
+- rating retrievals: add tests!!!
+- rating retrievals: extract http client - should be parameter
+- rating retrievals: handle exceptions (network?!) and return Unknown rating in case of (most?) failures
 - rating parsers: add tests with illegal json on input
 - rating parsers: throw exception rather then return defaults
 -? rating parsers: introduce common interface for rating parsers
