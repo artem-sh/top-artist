@@ -5,11 +5,11 @@ import net.liftweb.json._
 import sh.topartist.rating.vkontakteru.VkontakteRuParser._
 
 class VkontakteRuParserTest extends FunSuite {
-  ignore("parseTracksCount(), no tracks found") {
-    assert(None === parseRating(parse("""{"response":[0]}""")))
+  test("parseTracksCount(), no tracks found") {
+    assert(VkontakteRuRating.Unknown === parseRating(parse("""{"response":[0]}""")))
   }
 
-  ignore("parseTracksCount(), tracks found") {
+  test("parseTracksCount(), tracks found") {
     assert(VkontakteRuRating(454221) === parseRating(parse("""
     {
       "response": [

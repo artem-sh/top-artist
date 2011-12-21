@@ -1,2 +1,3 @@
-- uncomment VkontakteRuParserTest tests and implement VkontakteRuParser
--? introduce common interface for rating parsers
+- rating parsers: add tests with illegal json on input
+- rating parsers: throw exception rather then return defaults
+-? rating parsers: introduce common interface for rating parsers
