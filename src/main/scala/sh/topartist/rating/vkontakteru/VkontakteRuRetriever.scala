@@ -4,6 +4,7 @@ import sh.topartist.util.raisin.Disposable
 import dispatch._
 import sh.topartist.rating.RatingRetriever
 
+
 class VkontakteRuRetriever extends RatingRetriever with Disposable {
   val httpHandler = new Http
 

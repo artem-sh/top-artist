@@ -20,7 +20,7 @@ class Kazantip19LineUpParserTest extends FunSuite {
     val lineUp = new Kazantip19LineUpParser().parseLineUp(""" 1.2 - Cosmonaut ()""")
     assert(0 === lineUp.artists.size)
   }
-  
+
   test("parseLineUp() with different djs") {
     val lineUp = new Kazantip19LineUpParser().parseLineUp("""
     31,07 - Cosmonaut (SUNSET Point )

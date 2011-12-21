@@ -2,6 +2,7 @@ package sh.topartist
 
 import org.scalatest.FunSuite
 
+
 class LineUpTest extends FunSuite {
   val lineUp = new LineUp()
   val artistName = "DJ Kikin"

@@ -14,6 +14,6 @@ class PerformanceTest extends FunSuite {
   test("equals(), false") {
     val p1 = new Performance("1.1", "nowhere")
     val p2 = new Performance("1.12", "nowhere")
-    assert(!p1.eq (p2))
+    assert(!p1.eq(p2))
   }
 }

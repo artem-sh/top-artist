@@ -14,7 +14,7 @@ class PromodjRuRetriever extends RatingRetriever with Disposable {
     PromodjRuParser.parseDjUrl(artistName, Jsoup.parse(httpHandler(request as_str)))
   }
 
-  override  def retrieveRating(artistName: String): PromodjRuRating = {
+  override def retrieveRating(artistName: String): PromodjRuRating = {
     findDjPageUrl(artistName) match {
       case Some(djPageUrl) => {
         val request = url(djPageUrl)

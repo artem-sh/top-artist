@@ -2,6 +2,8 @@ package sh.topartist.util
 
 import org.scalatest.FunSuite
 import sh.topartist.util.ArtistUtil._
+
+
 class ArtistUtilTest extends FunSuite {
 
   test("splitArtists(), one artist only") {

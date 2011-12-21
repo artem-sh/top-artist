@@ -3,6 +3,7 @@ package sh.topartist.rating.lastfm
 import net.liftweb.json._
 import sh.topartist.util.JsonUtil._
 
+
 object LastFmRatingParser {
   def parseRating(searchArtistResponseJson: JValue): LastFmRating = {
     if (getFoundArtistsCount(searchArtistResponseJson) <= 0) return LastFmRating.Unknown

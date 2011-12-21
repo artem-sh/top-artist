@@ -3,6 +3,7 @@ package sh.topartist.rating
 import lastfm.LastFmRating
 import promodjru.PromodjRuRating
 
+
 trait Rating extends Ordered[Rating] {
   def +(that: Rating): Rating
 }

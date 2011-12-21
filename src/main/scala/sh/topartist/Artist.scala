@@ -3,6 +3,7 @@ package sh.topartist
 import scala.collection.Set
 import sh.topartist.rating.TotalRating
 
+
 class Artist(artistName: String) extends Ordered[Artist] {
   private val _name = artistName
   private val _performances = scala.collection.mutable.Set[Performance]()

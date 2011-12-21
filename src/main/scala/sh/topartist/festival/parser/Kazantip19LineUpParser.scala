@@ -6,22 +6,26 @@ import scala.util.parsing.combinator.RegexParsers
 import sh.topartist.util.AssertionUtil
 import sh.topartist.LineUp
 
-class Kazantip19LineUpParser extends RegexParsers {
-  override def skipWhitespace = false
 
+class Kazantip19LineUpParser extends RegexParsers {
   private var _artistName: String = null
   private var _when: String = null
   private var _where: String = null
+
+  override def skipWhitespace = false
+
   private def when = """\d{1,2},\d{1,2}""".r ^^ {s => _when = s}
+
   private def artistName = """[^(]+""".r ^^ {s => _artistName = s.trim()}
+
   private def where = """[^)]+""".r ^^ {s => _where = s.trim()}
+
   private def line = """\s*""".r ~ when ~ """\s*-\s*""".r ~ artistName ~ "(" ~ where ~ ")"
 
-  private def parseLine(str: String): Option[(String, String,  String)] = {
+  private def parseLine(str: String): Option[(String, String, String)] = {
     if (str.matches("^\n*") || str.matches("^\r\n*")) return None
-
     println("Kazantip19LineUpParser.parseLine(), line to parse is: '" + str + "'")
-    
+
     parse(line, str) match {
       case Success(result, next) => {
         AssertionUtil.checkParamIsNotNull(_artistName)

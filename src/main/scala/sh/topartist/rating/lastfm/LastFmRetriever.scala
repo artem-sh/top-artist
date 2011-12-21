@@ -2,7 +2,7 @@ package sh.topartist.rating.lastfm
 
 import dispatch._
 import net.liftweb.json._
-import sh.topartist.rating.{RatingRetriever, Rating}
+import sh.topartist.rating.RatingRetriever
 import sh.topartist.util.raisin.Disposable
 
 

@@ -2,6 +2,7 @@ package sh.topartist.rating.vkontakteru
 
 import org.scalatest.FunSuite
 
+
 class VkontakteRuRatingTest extends FunSuite {
   test("+") {
     assert(VkontakteRuRating(3) === VkontakteRuRating(1) + VkontakteRuRating(2))

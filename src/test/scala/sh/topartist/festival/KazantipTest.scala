@@ -6,6 +6,7 @@ import org.mockito.Mockito._
 import sh.topartist.rating.lastfm.{LastFmRating, LastFmRetriever}
 import sh.topartist.rating.promodjru.{PromodjRuRating, PromodjRuRetriever}
 
+
 class KazantipTest extends FunSuite with MockitoSugar {
   val lineUpStrWithDoubledArtists = """31,07 - Cosmonaut (SUNSET Point )
   5,08 - Loveski (SUNSET Point )
