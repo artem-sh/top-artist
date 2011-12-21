@@ -1,6 +1,7 @@
 package sh.topartist.rating.lastfm
 
 import net.liftweb.json._
+import sh.topartist.util.JsonUtil.extractStringValue
 
 object LastFmRatingParser {
   def parseRating(searchArtistResponseJson: JValue): LastFmRating = {
@@ -25,10 +26,5 @@ object LastFmRatingParser {
 
     if (listenersJValue.values == None) return 0
     extractStringValue(listenersJValue).toInt
-  }
-
-  private def extractStringValue(json: JValue): String = {
-    implicit val formats = Serialization.formats(NoTypeHints)
-    json.extract[String]
   }
 }
