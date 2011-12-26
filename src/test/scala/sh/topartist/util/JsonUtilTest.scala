@@ -14,5 +14,6 @@ class JsonUtilTest extends FunSuite {
   test("extractIntValue()") {
     assert(-143 === extractIntValue(JString("-143")))
     assert(143 === extractIntValue(JInt(143)))
+    intercept[NumberFormatException] {extractIntValue(JString(""))}
   }
 }

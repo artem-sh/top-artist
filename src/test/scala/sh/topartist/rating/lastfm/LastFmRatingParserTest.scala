@@ -2,10 +2,11 @@ package sh.topartist.rating.lastfm
 
 import org.scalatest.FlatSpec
 import org.scalatest.matchers.ShouldMatchers
+import sh.topartist.rating.RatingParserException
 
 
 class LastFmRatingParserTest extends FlatSpec with ShouldMatchers {
-  "LastFmRatingParser" should ("return certain rating if artist were founda and listeners count presented in json respond") in {
+  "LastFmRatingParser" should ("return certain rating if artist were found and listeners count presented in json respond") in {
     LastFmRatingParser.parseRating("""
       {
         "results":{
@@ -50,8 +51,20 @@ class LastFmRatingParserTest extends FlatSpec with ShouldMatchers {
       }""") should equal(LastFmRating("Mindless Self Indulgence", 442299))
   }
 
-  it should ("return zero rating if artist found but listeners count is not presented in json respond") in {
-    LastFmRatingParser.parseRating("""
+  it should ("throw RatingParserException if json format in respond is invalid") in {
+    evaluating {
+      LastFmRatingParser.parseRating("""
+      {
+        "results":{
+          "opensearch:Query":{
+            "#text":"",
+      }""")
+    } should produce[RatingParserException]
+  }
+
+  it should ("throw RatingParserException if artist found but listeners count is not presented in json respond") in {
+    evaluating {
+      LastFmRatingParser.parseRating("""
       {
         "results":{
           "opensearch:Query":{
@@ -97,11 +110,13 @@ class LastFmRatingParserTest extends FlatSpec with ShouldMatchers {
             "for":"Soundwalk Collective"
           }
         }
-      }""") should equal(LastFmRating("Soundwalk Collective", 0))
+      }""")
+    } should produce[RatingParserException]
   }
 
-  it should ("return unknown rating if no artist found") in {
-    LastFmRatingParser.parseRating("""
+  it should ("throw RatingParserException if no artist found") in {
+    evaluating {
+      LastFmRatingParser.parseRating("""
       {
         "results":{
           "opensearch:Query":{
@@ -118,6 +133,7 @@ class LastFmRatingParserTest extends FlatSpec with ShouldMatchers {
             "for":"DJ NILS___"
           }
         }
-      }""") should equal(LastFmRating.Unknown)
+      }""")
+    } should produce[RatingParserException]
   }
 }

@@ -2,22 +2,26 @@ package sh.topartist.rating.lastfm
 
 import net.liftweb.json._
 import sh.topartist.util.JsonUtil._
-import sh.topartist.rating.RatingParser
+import sh.topartist.rating.{RatingParserException, RatingParser}
 
 
 object LastFmRatingParser extends RatingParser {
   override def parseRating(searchArtistResponse: String): LastFmRating = {
-    val searchArtistResponseJson = parse(searchArtistResponse)
-    if (getFoundArtistsCount(searchArtistResponseJson) <= 0) return LastFmRating.Unknown
+    try {
+      val searchArtistResponseJson = parse(searchArtistResponse)
+      require(getFoundArtistsCount(searchArtistResponseJson) > 0)
 
-    LastFmRating(getFoundArtistsName(searchArtistResponseJson), getListenersCount(searchArtistResponseJson))
+      LastFmRating(getFoundArtistsName(searchArtistResponseJson), getListenersCount(searchArtistResponseJson))
+    } catch {
+      case e: Exception => throw new RatingParserException(e)
+    }
   }
 
   private def getFoundArtistsName(json: JValue): String = {
     val artistNameJValue = json \ "results" \ "artistmatches" \ "artist" \ "name"
-
-    if (artistNameJValue.values == None) return ""
-    extractStringValue(artistNameJValue)
+    val name = extractStringValue(artistNameJValue)
+    require(!name.isEmpty)
+    name
   }
 
   private def getFoundArtistsCount(json: JValue): Int = {
@@ -25,9 +29,6 @@ object LastFmRatingParser extends RatingParser {
   }
 
   private def getListenersCount(json: JValue): Int = {
-    val listenersJValue = json \ "results" \ "artistmatches" \ "artist" \ "listeners"
-
-    if (listenersJValue.values == None) return 0
-    extractIntValue(listenersJValue)
+    extractIntValue(json \ "results" \ "artistmatches" \ "artist" \ "listeners")
   }
 }

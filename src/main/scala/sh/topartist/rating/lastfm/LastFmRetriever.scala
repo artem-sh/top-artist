@@ -1,7 +1,7 @@
 package sh.topartist.rating.lastfm
 
 import dispatch._
-import sh.topartist.rating.RatingRetriever
+import sh.topartist.rating.{RatingParserException, RatingRetriever}
 
 
 class LastFmRetriever(http: Http) extends RatingRetriever {
@@ -10,7 +10,14 @@ class LastFmRetriever(http: Http) extends RatingRetriever {
   val baseRequest = :/("ws.audioscrobbler.com") / "2.0/"
 
   override def retrieveRating(artistName: String): LastFmRating = {
-    LastFmRatingParser.parseRating(doRequestSearchArtist(artistName))
+    try {
+      LastFmRatingParser.parseRating(doRequestSearchArtist(artistName))
+    } catch {
+      case e: RatingParserException => {
+        println(e)
+        LastFmRating.Unknown
+      }
+    }
   }
 
   private def doRequestSearchArtist(artistName: String): String = {
