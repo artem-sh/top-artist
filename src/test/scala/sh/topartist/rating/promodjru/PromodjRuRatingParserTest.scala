@@ -9,7 +9,7 @@ import org.scalatest.FlatSpec
 
 
 class PromodjRuRatingParserTest extends FlatSpec with ShouldMatchers {
-  "A PromodjRuRatingParser" should "find dj Loveski url with 'promodj-search-Loveski.htm' on input" in {
+  "PromodjRuRatingParser" should "find dj Loveski url with 'promodj-search-Loveski.htm' on input" in {
     val url = getClass.getResource("/sh/topartist/rating/promodjru/promodj-search-Loveski.htm")
     val doc = Jsoup.parse(new File(url.toURI), "UTF-8")
 
