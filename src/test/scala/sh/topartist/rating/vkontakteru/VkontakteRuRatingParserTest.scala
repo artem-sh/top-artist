@@ -1,17 +1,17 @@
 package sh.topartist.rating.vkontakteru
 
-import org.scalatest.FunSuite
-import net.liftweb.json._
 import sh.topartist.rating.vkontakteru.VkontakteRuRatingParser._
+import org.scalatest.FlatSpec
+import org.scalatest.matchers.ShouldMatchers
 
 
-class VkontakteRuRatingParserTest extends FunSuite {
-  test("parseTracksCount(), no tracks found") {
-    assert(VkontakteRuRating.Unknown === parseRating(parse("""{"response":[0]}""")))
+class VkontakteRuRatingParserTest extends FlatSpec with ShouldMatchers {
+  "VkontakteRuRatingParser" should "return Unknown rating if no tracks were found" in {
+    parseRating("""{"response":[0]}""") should equal(VkontakteRuRating.Unknown)
   }
 
-  test("parseTracksCount(), tracks found") {
-    assert(VkontakteRuRating(454221) === parseRating(parse("""
+  it should ("return certain rating if tracks were found") in {
+    parseRating("""
     {
       "response": [
         454221,
@@ -26,6 +26,6 @@ class VkontakteRuRatingParserTest extends FunSuite {
         }
       ]
     }
-    """)))
+    """) should equal(VkontakteRuRating(454221))
   }
 }
