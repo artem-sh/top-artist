@@ -11,11 +11,7 @@ class PromodjRuRetriever(http: Http) extends RatingRetriever {
   override def retrieveRating(artistName: String): PromodjRuRating = {
     findDjPageUrl(artistName) match {
       case Some(djPageUrl) => {
-        val request = url(djPageUrl)
-        PromodjRuRatingParser.parseDjPromoRank(Jsoup.parse(httpClient(request as_str))) match {
-          case Some(r) => PromodjRuRating(r)
-          case None => PromodjRuRating.Unknown
-        }
+        PromodjRuRatingParser.parseRating(httpClient(url(djPageUrl) as_str))
       }
       case None => PromodjRuRating.Unknown
     }

@@ -2,9 +2,18 @@ package sh.topartist.rating.promodjru
 
 import org.jsoup.nodes.Document
 import scala.collection.JavaConversions._
+import sh.topartist.rating.RatingParser
+import org.jsoup.Jsoup
 
 
-object PromodjRuRatingParser {
+object PromodjRuRatingParser extends RatingParser {
+  override def parseRating(httpResponse: String): PromodjRuRating = {
+    val elements = Jsoup.parse(httpResponse).select("a#rankvoter")
+    require(elements.size() == 1)
+
+    PromodjRuRating(elements.first().text().toInt)
+  }
+
   def parseDjUrl(artistName: String, doc: Document): Option[String] = {
     val elements = doc.select("a.avatar")
 
@@ -17,16 +26,5 @@ object PromodjRuRatingParser {
     }
 
     findDjUrl()
-  }
-
-  def parseDjPromoRank(doc: Document): Option[Int] = {
-    val elements = doc.select("a#rankvoter")
-    if (elements.isEmpty || (elements.size() > 1)) return None
-
-    try {
-      Some(elements.first().text().toInt)
-    } catch {
-      case e: NumberFormatException => None
-    }
   }
 }
