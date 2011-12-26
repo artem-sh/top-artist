@@ -6,6 +6,7 @@ import PromodjRuRatingParser._
 import scala.io.Source
 import org.scalatest.matchers.ShouldMatchers
 import org.scalatest.FlatSpec
+import sh.topartist.rating.RatingParserException
 
 
 class PromodjRuRatingParserTest extends FlatSpec with ShouldMatchers {
@@ -16,7 +17,7 @@ class PromodjRuRatingParserTest extends FlatSpec with ShouldMatchers {
     parseDjUrl("loveski", doc).getOrElse(fail("Nothing!")) should equal("http://djloveski.promodj.ru/")
   }
 
-  it should ("throw IllegalArgumentException if promorank occure once in web page but no value defined") in {
+  it should ("throw RatingParserException if promorank occure once in web page but no value defined") in {
     evaluating {
       parseRating("""
       <html>
@@ -26,10 +27,10 @@ class PromodjRuRatingParserTest extends FlatSpec with ShouldMatchers {
           </div>
         </body>
       </html>""")
-    } should produce[IllegalArgumentException]
+    } should produce[RatingParserException]
   }
 
-  it should ("throw IllegalArgumentException if promoranks occure twice in web page") in {
+  it should ("throw RatingParserException if promoranks occure twice in web page") in {
     evaluating {
       parseRating("""
       <html>
@@ -40,7 +41,7 @@ class PromodjRuRatingParserTest extends FlatSpec with ShouldMatchers {
           </div>
         </body>
       </html>""")
-    } should produce[IllegalArgumentException]
+    } should produce[RatingParserException]
   }
 
   it should ("return rating cause promorank occures once in a fake web page") in {
