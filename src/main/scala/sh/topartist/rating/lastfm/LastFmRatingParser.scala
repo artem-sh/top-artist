@@ -2,10 +2,12 @@ package sh.topartist.rating.lastfm
 
 import net.liftweb.json._
 import sh.topartist.util.JsonUtil._
+import sh.topartist.rating.RatingParser
 
 
-object LastFmRatingParser {
-  def parseRating(searchArtistResponseJson: JValue): LastFmRating = {
+object LastFmRatingParser extends RatingParser {
+  override def parseRating(searchArtistResponse: String): LastFmRating = {
+    val searchArtistResponseJson = parse(searchArtistResponse)
     if (getFoundArtistsCount(searchArtistResponseJson) <= 0) return LastFmRating.Unknown
 
     LastFmRating(getFoundArtistsName(searchArtistResponseJson), getListenersCount(searchArtistResponseJson))

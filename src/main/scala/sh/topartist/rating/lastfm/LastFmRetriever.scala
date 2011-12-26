@@ -1,7 +1,6 @@
 package sh.topartist.rating.lastfm
 
 import dispatch._
-import net.liftweb.json._
 import sh.topartist.rating.RatingRetriever
 
 
@@ -11,12 +10,11 @@ class LastFmRetriever(http: Http) extends RatingRetriever {
   val baseRequest = :/("ws.audioscrobbler.com") / "2.0/"
 
   override def retrieveRating(artistName: String): LastFmRating = {
-    val json = doRequestSearchArtist(artistName)
-    LastFmRatingParser.parseRating(json)
+    LastFmRatingParser.parseRating(doRequestSearchArtist(artistName))
   }
 
-  private def doRequestSearchArtist(artistName: String): JValue = {
+  private def doRequestSearchArtist(artistName: String): String = {
     val request = baseRequest <<? (commonRequestParameters + ("method" -> "artist.search") + ("artist" -> artistName) + ("limit" -> "1"))
-    parse(httpClient(request as_str))
+    httpClient(request as_str)
   }
 }

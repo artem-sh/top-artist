@@ -1,12 +1,11 @@
 package sh.topartist.rating.lastfm
 
 import org.scalatest.FunSuite
-import net.liftweb.json._
 
 
 class LastFmRatingParserTest extends FunSuite {
   test("parseRating(), artist found, listeners count presented in json respond") {
-    assert(LastFmRating("Mindless Self Indulgence", 442299) === LastFmRatingParser.parseRating(parse("""
+    assert(LastFmRating("Mindless Self Indulgence", 442299) === LastFmRatingParser.parseRating("""
 {
   "results":{
     "opensearch:Query":{
@@ -47,25 +46,25 @@ class LastFmRatingParserTest extends FunSuite {
       "for":"Mindless Self Indulgence"
     }
   }
-}""")))
+}"""))
   }
 
   test("parseRating(), artist found, listeners count is not presented in json respond") {
     expect(LastFmRating("Soundwalk Collective", 0)) {
-      LastFmRatingParser.parseRating(parse("""
+      LastFmRatingParser.parseRating("""
     {"results":{"opensearch:Query":{"#text":"","role":"request","searchTerms":"Soundwalk Collective","startPage":"1"},
     "opensearch:totalResults":"1","opensearch:startIndex":"0","opensearch:itemsPerPage":"1",
     "artistmatches":{"artist":{"name":"Soundwalk Collective","mbid":"","url":"http:\/\/www.last.fm\/music\/Soundwalk+Collective",
     "streamable":"0","image":[{"#text":"","size":"small"},{"#text":"","size":"medium"},{"#text":"","size":"large"},{"#text":"","size":"extralarge"},
-    {"#text":"","size":"mega"}]}},"@attr":{"for":"Soundwalk Collective"}}}"""))
+    {"#text":"","size":"mega"}]}},"@attr":{"for":"Soundwalk Collective"}}}""")
     }
   }
 
   test("parseRating(), no artist found") {
     expect(LastFmRating("", 0)) {
-      LastFmRatingParser.parseRating(parse("""
+      LastFmRatingParser.parseRating("""
     {"results":{"opensearch:Query":{"#text":"","role":"request","searchTerms":"DJ NILS qwwwwwwwwwwwwwwwwwwwwww","startPage":"1"},
-    "opensearch:totalResults":"0","opensearch:startIndex":"0","opensearch:itemsPerPage":"1","artistmatches":"\n","@attr":{"for":"DJ NILS___"}}}"""))
+    "opensearch:totalResults":"0","opensearch:startIndex":"0","opensearch:itemsPerPage":"1","artistmatches":"\n","@attr":{"for":"DJ NILS___"}}}""")
     }
   }
 }
