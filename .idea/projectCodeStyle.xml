@@ -3,7 +3,10 @@
   <component name="CodeStyleSettingsManager">
     <option name="PER_PROJECT_SETTINGS">
       <value>
+        <option name="KEEP_SIMPLE_BLOCKS_IN_ONE_LINE" value="true" />
+        <option name="KEEP_SIMPLE_METHODS_IN_ONE_LINE" value="true" />
         <ScalaCodeStyleSettings>
+          <option name="ADD_UNAMBIGIOUS_IMPORTS_ON_THE_FLY" value="true" />
           <option name="ADD_FULL_QUALIFIED_IMPORTS" value="true" />
         </ScalaCodeStyleSettings>
         <ADDITIONAL_INDENT_OPTIONS fileType="css">
