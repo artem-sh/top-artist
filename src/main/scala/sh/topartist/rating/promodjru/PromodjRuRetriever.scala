@@ -12,7 +12,7 @@ class PromodjRuRetriever(http: Http) extends RatingRetriever {
     findDjPageUrl(artistName) match {
       case Some(djPageUrl) => {
         val request = url(djPageUrl)
-        PromodjRuParser.parseDjPromoRank(Jsoup.parse(httpClient(request as_str))) match {
+        PromodjRuRatingParser.parseDjPromoRank(Jsoup.parse(httpClient(request as_str))) match {
           case Some(r) => PromodjRuRating(r)
           case None => PromodjRuRating.Unknown
         }
@@ -23,7 +23,7 @@ class PromodjRuRetriever(http: Http) extends RatingRetriever {
 
   private def findDjPageUrl(artistName: String): Option[String] = {
     val request = url("http://promodj.ru/search/?mode=user&sortby=rating&searchfor=" + Request.encode_%(artistName))
-    PromodjRuParser.parseDjUrl(artistName, Jsoup.parse(httpClient(request as_str)))
+    PromodjRuRatingParser.parseDjUrl(artistName, Jsoup.parse(httpClient(request as_str)))
   }
 }
 

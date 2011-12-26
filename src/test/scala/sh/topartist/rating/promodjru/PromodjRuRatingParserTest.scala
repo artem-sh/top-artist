@@ -3,10 +3,10 @@ package sh.topartist.rating.promodjru
 import org.scalatest.FunSuite
 import org.jsoup.Jsoup
 import java.io.File
-import PromodjRuParser._
+import PromodjRuRatingParser._
 
 
-class PromodjRuParserTest extends FunSuite {
+class PromodjRuRatingParserTest extends FunSuite {
 
   test("parseDjUrl() with 'promodj-search-Loveski.htm' on input") {
     val url = getClass.getResource("/sh/topartist/rating/promodjru/promodj-search-Loveski.htm")

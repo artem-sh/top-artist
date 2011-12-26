@@ -4,7 +4,7 @@ import net.liftweb.json._
 import sh.topartist.util.JsonUtil._
 
 
-object VkontakteRuParser {
+object VkontakteRuRatingParser {
   def parseRating(audioSearchJsonResponse: JValue): VkontakteRuRating = {
     val jValue = (audioSearchJsonResponse \ "response")(0)
     VkontakteRuRating(extractIntValue(jValue))

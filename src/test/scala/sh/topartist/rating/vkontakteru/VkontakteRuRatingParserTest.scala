@@ -2,10 +2,10 @@ package sh.topartist.rating.vkontakteru
 
 import org.scalatest.FunSuite
 import net.liftweb.json._
-import sh.topartist.rating.vkontakteru.VkontakteRuParser._
+import sh.topartist.rating.vkontakteru.VkontakteRuRatingParser._
 
 
-class VkontakteRuParserTest extends FunSuite {
+class VkontakteRuRatingParserTest extends FunSuite {
   test("parseTracksCount(), no tracks found") {
     assert(VkontakteRuRating.Unknown === parseRating(parse("""{"response":[0]}""")))
   }
