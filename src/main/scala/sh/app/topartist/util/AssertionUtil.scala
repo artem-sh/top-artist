@@ -1,5 +1,4 @@
-package sh.topartist.util
-
+package sh.app.topartist.util
 
 object AssertionUtil {
 

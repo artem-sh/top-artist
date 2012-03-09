@@ -1,7 +1,7 @@
-package sh.topartist.rating.lastfm
+package sh.app.topartist.rating.lastfm
 
 import dispatch._
-import sh.topartist.rating.{RatingParserException, RatingRetriever}
+import sh.app.topartist.rating.{RatingParserException, RatingRetriever}
 
 
 class LastFmRetriever(http: Http) extends RatingRetriever {

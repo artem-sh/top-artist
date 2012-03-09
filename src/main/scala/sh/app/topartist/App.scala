@@ -1,9 +1,9 @@
-package sh.topartist
+package sh.app.topartist
 
 import rating.lastfm.LastFmRetriever
 import rating.promodjru.PromodjRuRetriever
-import sh.topartist.festival.Kazantip
-import sh.topartist.rating.vkontakteru.VkontakteRuRetriever
+import sh.app.topartist.festival.Kazantip
+import sh.app.topartist.rating.vkontakteru.VkontakteRuRetriever
 import dispatch.Http
 
 

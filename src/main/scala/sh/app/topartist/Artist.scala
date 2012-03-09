@@ -1,7 +1,7 @@
-package sh.topartist
+package sh.app.topartist
 
 import scala.collection.Set
-import sh.topartist.rating.TotalRating
+import sh.app.topartist.rating.TotalRating
 
 
 class Artist(artistName: String) extends Ordered[Artist] {

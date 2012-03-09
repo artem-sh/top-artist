@@ -1,4 +1,4 @@
-package sh.topartist.rating.vkontakteru
+package sh.app.topartist.rating.vkontakteru
 
 import org.scalatest.FunSuite
 

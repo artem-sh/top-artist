@@ -1,9 +1,9 @@
-package sh.topartist.rating.vkontakteru
+package sh.app.topartist.rating.vkontakteru
 
-import sh.topartist.rating.vkontakteru.VkontakteRuRatingParser._
+import sh.app.topartist.rating.vkontakteru.VkontakteRuRatingParser._
 import org.scalatest.FlatSpec
 import org.scalatest.matchers.ShouldMatchers
-import sh.topartist.rating.RatingParserException
+import sh.app.topartist.rating.RatingParserException
 
 
 class VkontakteRuRatingParserTest extends FlatSpec with ShouldMatchers {

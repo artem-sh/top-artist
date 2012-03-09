@@ -1,8 +1,8 @@
-package sh.topartist.rating.vkontakteru
+package sh.app.topartist.rating.vkontakteru
 
 import net.liftweb.json._
-import sh.topartist.util.JsonUtil._
-import sh.topartist.rating.{RatingParserException, RatingParser}
+import sh.app.topartist.util.JsonUtil._
+import sh.app.topartist.rating.{RatingParserException, RatingParser}
 
 
 object VkontakteRuRatingParser extends RatingParser {

@@ -1,7 +1,7 @@
-package sh.topartist.util
+package sh.app.topartist.util
 
 import org.scalatest.FunSuite
-import sh.topartist.util.ArtistUtil._
+import sh.app.topartist.util.ArtistUtil._
 
 
 class ArtistUtilTest extends FunSuite {

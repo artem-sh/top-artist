@@ -1,6 +1,6 @@
-package sh.topartist.rating.vkontakteru
+package sh.app.topartist.rating.vkontakteru
 
-import sh.topartist.rating.Rating
+import sh.app.topartist.rating.Rating
 
 
 case class VkontakteRuRating(tracksCount: Int) extends Rating {

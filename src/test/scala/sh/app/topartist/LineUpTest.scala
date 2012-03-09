@@ -1,4 +1,4 @@
-package sh.topartist
+package sh.app.topartist
 
 import org.scalatest.FunSuite
 

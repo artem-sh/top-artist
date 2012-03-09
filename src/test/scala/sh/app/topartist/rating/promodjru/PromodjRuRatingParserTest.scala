@@ -1,4 +1,4 @@
-package sh.topartist.rating.promodjru
+package sh.app.topartist.rating.promodjru
 
 import org.jsoup.Jsoup
 import java.io.File
@@ -6,7 +6,7 @@ import PromodjRuRatingParser._
 import scala.io.Source
 import org.scalatest.matchers.ShouldMatchers
 import org.scalatest.FlatSpec
-import sh.topartist.rating.RatingParserException
+import sh.app.topartist.rating.RatingParserException
 
 
 class PromodjRuRatingParserTest extends FlatSpec with ShouldMatchers {

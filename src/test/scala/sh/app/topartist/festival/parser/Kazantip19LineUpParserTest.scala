@@ -1,7 +1,7 @@
-package sh.topartist.festival.parser
+package sh.app.topartist.festival.parser
 
 import org.scalatest.FunSuite
-import sh.topartist.Performance
+import sh.app.topartist.Performance
 
 
 class Kazantip19LineUpParserTest extends FunSuite {

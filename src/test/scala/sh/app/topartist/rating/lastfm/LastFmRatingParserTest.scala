@@ -1,8 +1,8 @@
-package sh.topartist.rating.lastfm
+package sh.app.topartist.rating.lastfm
 
 import org.scalatest.FlatSpec
 import org.scalatest.matchers.ShouldMatchers
-import sh.topartist.rating.RatingParserException
+import sh.app.topartist.rating.RatingParserException
 
 
 class LastFmRatingParserTest extends FlatSpec with ShouldMatchers {

@@ -1,6 +1,6 @@
-package sh.topartist.rating.promodjru
+package sh.app.topartist.rating.promodjru
 
-import sh.topartist.rating.Rating
+import sh.app.topartist.rating.Rating
 
 
 case class PromodjRuRating(promoRank: Int) extends Rating {

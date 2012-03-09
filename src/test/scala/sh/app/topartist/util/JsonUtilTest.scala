@@ -1,7 +1,7 @@
-package sh.topartist.util
+package sh.app.topartist.util
 
 import org.scalatest.FunSuite;
-import sh.topartist.util.JsonUtil._
+import sh.app.topartist.util.JsonUtil._
 import net.liftweb.json.JsonAST.{JInt, JString}
 
 

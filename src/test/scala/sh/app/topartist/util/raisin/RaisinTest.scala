@@ -1,7 +1,7 @@
-package sh.topartist.util.raisin
+package sh.app.topartist.util.raisin
 
 import org.scalatest.FunSuite
-import sh.topartist.util.raisin.Raisin._
+import sh.app.topartist.util.raisin.Raisin._
 
 
 class RaisinTest extends FunSuite {

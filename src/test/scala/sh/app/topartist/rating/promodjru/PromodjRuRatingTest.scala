@@ -1,4 +1,4 @@
-package sh.topartist.rating.promodjru
+package sh.app.topartist.rating.promodjru
 
 import org.scalatest.FunSuite
 

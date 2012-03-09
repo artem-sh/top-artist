@@ -1,11 +1,11 @@
-package sh.topartist.festival
+package sh.app.topartist.festival
 
 import org.scalatest.FunSuite
 import org.scalatest.mock.MockitoSugar
 import org.mockito.Mockito._
-import sh.topartist.rating.promodjru.{PromodjRuRating, PromodjRuRetriever}
-import sh.topartist.rating.lastfm.{LastFmRating, LastFmRetriever}
-import sh.topartist.rating.vkontakteru.{VkontakteRuRating, VkontakteRuRetriever}
+import sh.app.topartist.rating.promodjru.{PromodjRuRating, PromodjRuRetriever}
+import sh.app.topartist.rating.lastfm.{LastFmRating, LastFmRetriever}
+import sh.app.topartist.rating.vkontakteru.{VkontakteRuRating, VkontakteRuRetriever}
 
 
 class KazantipTest extends FunSuite with MockitoSugar {

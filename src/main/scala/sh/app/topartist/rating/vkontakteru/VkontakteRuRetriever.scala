@@ -1,7 +1,7 @@
-package sh.topartist.rating.vkontakteru
+package sh.app.topartist.rating.vkontakteru
 
 import dispatch._
-import sh.topartist.rating.{RatingParserException, RatingParser, RatingRetriever}
+import sh.app.topartist.rating.{RatingParserException, RatingParser, RatingRetriever}
 
 
 class VkontakteRuRetriever(http: Http) extends RatingRetriever {

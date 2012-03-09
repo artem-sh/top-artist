@@ -1,4 +1,4 @@
-package sh.topartist
+package sh.app.topartist
 
 class Performance(when: String, where: String) {
   val _when = when

@@ -1,10 +1,10 @@
-package sh.topartist.festival.parser
+package sh.app.topartist.festival.parser
 
 import io.Source
 import java.net.URL
 import scala.util.parsing.combinator.RegexParsers
-import sh.topartist.util.AssertionUtil
-import sh.topartist.LineUp
+import sh.app.topartist.util.AssertionUtil
+import sh.app.topartist.LineUp
 
 
 class Kazantip19LineUpParser extends RegexParsers {

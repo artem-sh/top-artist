@@ -1,4 +1,4 @@
-package sh.topartist.rating
+package sh.app.topartist.rating
 
 
 trait RatingRetriever {

@@ -1,9 +1,9 @@
-package sh.topartist.rating.promodjru
+package sh.app.topartist.rating.promodjru
 
 import org.jsoup.Jsoup
 import dispatch._
-import sh.topartist.rating.{RatingParserException, RatingRetriever}
-import sh.topartist.rating.promodjru.PromodjRuRatingParser._
+import sh.app.topartist.rating.{RatingParserException, RatingRetriever}
+import sh.app.topartist.rating.promodjru.PromodjRuRatingParser._
 
 
 class PromodjRuRetriever(http: Http) extends RatingRetriever {

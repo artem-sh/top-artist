@@ -1,4 +1,4 @@
-package sh.topartist.rating
+package sh.app.topartist.rating
 
 
 class RatingParserException(e: Exception) extends Exception(e)

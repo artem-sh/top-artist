@@ -1,5 +1,4 @@
-package sh.topartist.util.raisin
-
+package sh.app.topartist.util.raisin
 
 /**
  * See http://naturalsoftware.blogspot.com/2009/06/more-scala-using-raisin.html

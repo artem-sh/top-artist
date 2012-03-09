@@ -1,4 +1,4 @@
-package sh.topartist.util
+package sh.app.topartist.util
 
 import net.liftweb.json._
 

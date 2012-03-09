@@ -1,6 +1,6 @@
-package sh.topartist.rating.lastfm
+package sh.app.topartist.rating.lastfm
 
-import sh.topartist.rating.Rating
+import sh.app.topartist.rating.Rating
 
 
 case class LastFmRating(foundName: String, listeners: Int) extends Rating {

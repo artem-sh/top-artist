@@ -1,8 +1,8 @@
-package sh.topartist.rating.lastfm
+package sh.app.topartist.rating.lastfm
 
 import net.liftweb.json._
-import sh.topartist.util.JsonUtil._
-import sh.topartist.rating.{RatingParserException, RatingParser}
+import sh.app.topartist.util.JsonUtil._
+import sh.app.topartist.rating.{RatingParserException, RatingParser}
 
 
 object LastFmRatingParser extends RatingParser {

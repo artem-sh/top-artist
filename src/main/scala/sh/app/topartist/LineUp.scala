@@ -1,4 +1,4 @@
-package sh.topartist
+package sh.app.topartist
 
 class LineUp {
   private val _artists = scala.collection.mutable.Map[String, Artist]()

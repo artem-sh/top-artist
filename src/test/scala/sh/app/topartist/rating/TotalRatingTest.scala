@@ -1,9 +1,9 @@
-package sh.topartist.rating
+package sh.app.topartist.rating
 
 import lastfm.LastFmRating
 import org.scalatest.FunSuite
 import promodjru.PromodjRuRating
-import sh.topartist.rating.vkontakteru.VkontakteRuRating
+import sh.app.topartist.rating.vkontakteru.VkontakteRuRating
 
 
 class TotalRatingTest extends FunSuite {

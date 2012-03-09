@@ -1,8 +1,8 @@
-package sh.topartist
+package sh.app.topartist
 
 import org.scalatest.FunSuite
-import sh.topartist.rating.lastfm.LastFmRating
-import sh.topartist.rating.promodjru.PromodjRuRating
+import sh.app.topartist.rating.lastfm.LastFmRating
+import sh.app.topartist.rating.promodjru.PromodjRuRating
 
 
 class ArtistTest extends FunSuite {

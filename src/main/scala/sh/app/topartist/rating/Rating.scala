@@ -1,8 +1,8 @@
-package sh.topartist.rating
+package sh.app.topartist.rating
 
 import lastfm.LastFmRating
 import promodjru.PromodjRuRating
-import sh.topartist.rating.vkontakteru.VkontakteRuRating
+import sh.app.topartist.rating.vkontakteru.VkontakteRuRating
 
 
 trait Rating extends Ordered[Rating] {

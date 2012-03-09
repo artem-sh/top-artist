@@ -1,4 +1,4 @@
-package sh.topartist.rating.lastfm
+package sh.app.topartist.rating.lastfm
 
 import org.scalatest.FunSuite
 

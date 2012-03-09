@@ -1,11 +1,11 @@
-package sh.topartist.festival
+package sh.app.topartist.festival
 
-import sh.topartist.festival.parser.Kazantip19LineUpParser
-import sh.topartist.rating.lastfm.{LastFmRating, LastFmRetriever}
-import sh.topartist.util.ArtistUtil
-import sh.topartist.LineUp
-import sh.topartist.rating.promodjru.{PromodjRuRating, PromodjRuRetriever}
-import sh.topartist.rating.vkontakteru.{VkontakteRuRating, VkontakteRuRetriever}
+import sh.app.topartist.festival.parser.Kazantip19LineUpParser
+import sh.app.topartist.rating.lastfm.{LastFmRating, LastFmRetriever}
+import sh.app.topartist.util.ArtistUtil
+import sh.app.topartist.LineUp
+import sh.app.topartist.rating.promodjru.{PromodjRuRating, PromodjRuRetriever}
+import sh.app.topartist.rating.vkontakteru.{VkontakteRuRating, VkontakteRuRetriever}
 
 
 trait FestivalValuer {
