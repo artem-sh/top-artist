@@ -9,10 +9,11 @@
   <title>Hello World</title>
 </h:head>
 <h:body>
-  <h3>Hello World</h3>
-  <!--<h:form>-->
-    <!--<h:inputText value="#{helloBean.name}"></h:inputText>-->
-    <!--<h:commandButton value="Welcome Me" action="welcome"></h:commandButton>-->
-  <!--</h:form>-->
+  <h3>Hello! What's your name?</h3>
+  <h:form>
+    <h:inputText value="#{rawLineUp.content}"></h:inputText>
+    <h:commandButton value="Answer" action="index"></h:commandButton>
+  </h:form>
+
 </h:body>
 </html>
