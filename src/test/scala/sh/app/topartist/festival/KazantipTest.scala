@@ -26,8 +26,15 @@ class KazantipTest extends FunSuite with MockitoSugar {
     val lineUpStr = """31,07 - Cosmonaut (SUNSET Point )
     6,08 - Pendulum + MC WREK (MAIN STAGE) OPENING CEREMONY
     20,08 - Groove Armada / ANDY CATO (MAIN STAGE) CLOSING PARTY"""
-    val lineUp = Kazantip.rateArtists(lineUpStr, createLastFmRetrieverMock, createPromodjRuRetrieverMock, createVkontakteRuRetrieverMock)
+
+    object Config {
+      val lastFmRetriever = createLastFmRetrieverMock
+      val promodjRuRetriever = createPromodjRuRetrieverMock
+      val vkontakteRuRatingRetriever = createVkontakteRuRetrieverMock
+    }
+    val lineUp = new Kazantip(Config).rateArtists(lineUpStr)
     val sortedArtists = lineUp.artists.sorted
+
     assert(3 === sortedArtists.size)
     assert("Groove Armada / ANDY CATO" === sortedArtists(0).name)
     assert("Cosmonaut" === sortedArtists(1).name)

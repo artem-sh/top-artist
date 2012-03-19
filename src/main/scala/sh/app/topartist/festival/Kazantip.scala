@@ -9,25 +9,22 @@ import sh.app.topartist.rating.vkontakteru.{VkontakteRuRating, VkontakteRuRating
 
 
 trait FestivalValuer {
-  def rateArtists(lineUpContent: String,
-                  lastFmRetriever: LastFmRetriever,
-                  promodjRuRetriever: PromodjRuRetriever,
-                  vkontakteRuRetriever: VkontakteRuRatingRetriever): LineUp
+  def rateArtists(lineUpContent: String): LineUp
 }
 
 
-object Kazantip extends FestivalValuer {
-  override def rateArtists(lineUpContent: String,
-                           lastFmRetriever: LastFmRetriever,
-                           promodjRuRetriever: PromodjRuRetriever,
-                           vkontakteRuRetriever: VkontakteRuRatingRetriever): LineUp = {
-    val lineUp = new Kazantip19LineUpParser().parseLineUp(lineUpContent)
+class Kazantip(cfg: {
+  val lastFmRetriever: LastFmRetriever
+  val promodjRuRetriever: PromodjRuRetriever
+  val vkontakteRuRatingRetriever: VkontakteRuRatingRetriever}) extends FestivalValuer {
 
+  override def rateArtists(lineUpContent: String): LineUp = {
+    val lineUp = new Kazantip19LineUpParser().parseLineUp(lineUpContent)
     lineUp.artists.foreach(artist => {
       ArtistUtil.splitArtists(artist.name).foreach(name => {
-        artist.totalRating.lastFmRating = artist.totalRating.lastFmRating + rateWithLastFm(name, lastFmRetriever)
-        artist.totalRating.promodjRuRating = artist.totalRating.promodjRuRating + rateWithPromodjRu(name, promodjRuRetriever)
-        artist.totalRating.vkontakteRuRating = artist.totalRating.vkontakteRuRating + rateWithVkontakteRu(name, vkontakteRuRetriever)
+        artist.totalRating.lastFmRating = artist.totalRating.lastFmRating + rateWithLastFm(name, cfg.lastFmRetriever)
+        artist.totalRating.promodjRuRating = artist.totalRating.promodjRuRating + rateWithPromodjRu(name, cfg.promodjRuRetriever)
+        artist.totalRating.vkontakteRuRating = artist.totalRating.vkontakteRuRating + rateWithVkontakteRu(name, cfg.vkontakteRuRatingRetriever)
       })
     })
 
