@@ -5,7 +5,7 @@ import org.scalatest.mock.MockitoSugar
 import org.mockito.Mockito._
 import sh.app.topartist.rating.promodjru.{PromodjRuRating, PromodjRuRetriever}
 import sh.app.topartist.rating.lastfm.{LastFmRating, LastFmRetriever}
-import sh.app.topartist.rating.vkontakteru.{VkontakteRuRating, VkontakteRuRetriever}
+import sh.app.topartist.rating.vkontakteru.{VkontakteRuRating, VkontakteRuRatingRetriever}
 
 
 class KazantipTest extends FunSuite with MockitoSugar {
@@ -59,8 +59,8 @@ class KazantipTest extends FunSuite with MockitoSugar {
     retriever
   }
 
-  private def createVkontakteRuRetrieverMock: VkontakteRuRetriever = {
-    val retriever = mock[VkontakteRuRetriever]
+  private def createVkontakteRuRetrieverMock: VkontakteRuRatingRetriever = {
+    val retriever = mock[VkontakteRuRatingRetriever]
     when(retriever.retrieveRating("Cosmonaut")).thenReturn(VkontakteRuRating(10000))
     when(retriever.retrieveRating("Pendulum")).thenReturn(VkontakteRuRating(20000))
     when(retriever.retrieveRating("MC WREK")).thenReturn(VkontakteRuRating(1000))

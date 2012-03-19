@@ -5,14 +5,14 @@ import sh.app.topartist.rating.lastfm.{LastFmRating, LastFmRetriever}
 import sh.app.topartist.util.ArtistUtil
 import sh.app.topartist.LineUp
 import sh.app.topartist.rating.promodjru.{PromodjRuRating, PromodjRuRetriever}
-import sh.app.topartist.rating.vkontakteru.{VkontakteRuRating, VkontakteRuRetriever}
+import sh.app.topartist.rating.vkontakteru.{VkontakteRuRating, VkontakteRuRatingRetriever}
 
 
 trait FestivalValuer {
   def rateArtists(lineUpContent: String,
                   lastFmRetriever: LastFmRetriever,
                   promodjRuRetriever: PromodjRuRetriever,
-                  vkontakteRuRetriever: VkontakteRuRetriever): LineUp
+                  vkontakteRuRetriever: VkontakteRuRatingRetriever): LineUp
 }
 
 
@@ -20,7 +20,7 @@ object Kazantip extends FestivalValuer {
   override def rateArtists(lineUpContent: String,
                            lastFmRetriever: LastFmRetriever,
                            promodjRuRetriever: PromodjRuRetriever,
-                           vkontakteRuRetriever: VkontakteRuRetriever): LineUp = {
+                           vkontakteRuRetriever: VkontakteRuRatingRetriever): LineUp = {
     val lineUp = new Kazantip19LineUpParser().parseLineUp(lineUpContent)
 
     lineUp.artists.foreach(artist => {
@@ -57,7 +57,7 @@ object Kazantip extends FestivalValuer {
     retriever.retrieveRating(name)
   }
 
-  private def rateWithVkontakteRu(name: String, retriever: VkontakteRuRetriever): VkontakteRuRating = {
+  private def rateWithVkontakteRu(name: String, retriever: VkontakteRuRatingRetriever): VkontakteRuRating = {
     println("Trying to rate with vkontakte.ru artist " + name)
     retriever.retrieveRating(name)
   }

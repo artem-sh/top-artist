@@ -6,7 +6,7 @@ import org.mockito.Mockito.when
 import org.mockito.Matchers.any
 import dispatch._
 
-class VkontakteRuRetrieverTest extends FunSuite with MockitoSugar {
+class VkontakteRuRatingRetrieverTest extends FunSuite with MockitoSugar {
   trait TestHttpExecutor extends HttpExecutor {
     type HttpPackage[T] = T
   }

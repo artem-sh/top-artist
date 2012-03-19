@@ -4,7 +4,7 @@ import dispatch._
 import sh.app.topartist.rating.{RatingParserException, RatingParser, RatingRetriever}
 
 
-class VkontakteRuRetriever(http: Http) extends RatingRetriever {
+class VkontakteRuRatingRetriever(http: Http) extends RatingRetriever {
   private val httpClient = http
 
   override def retrieveRating(artistName: String): VkontakteRuRating = {

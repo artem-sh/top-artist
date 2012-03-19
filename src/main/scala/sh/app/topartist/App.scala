@@ -3,7 +3,7 @@ package sh.app.topartist
 import rating.lastfm.LastFmRetriever
 import rating.promodjru.PromodjRuRetriever
 import sh.app.topartist.festival.Kazantip
-import sh.app.topartist.rating.vkontakteru.VkontakteRuRetriever
+import sh.app.topartist.rating.vkontakteru.VkontakteRuRatingRetriever
 import dispatch.Http
 
 
@@ -14,7 +14,7 @@ object App extends scala.App {
 
   val http = new Http
   try {
-    val lineUp = Kazantip.rateArtists(lineUpStr, new LastFmRetriever(http), new PromodjRuRetriever(http), new VkontakteRuRetriever(http))
+    val lineUp = Kazantip.rateArtists(lineUpStr, new LastFmRetriever(http), new PromodjRuRetriever(http), new VkontakteRuRatingRetriever(http))
     lineUp.artists.sortWith(_ > _).foreach(println)
   } finally {
     http.shutdown()
