@@ -3,8 +3,8 @@ package sh.app.topartist.festival
 import org.scalatest.FunSuite
 import org.scalatest.mock.MockitoSugar
 import org.mockito.Mockito._
-import sh.app.topartist.rating.promodjru.{PromodjRuRating, PromodjRuRetriever}
-import sh.app.topartist.rating.lastfm.{LastFmRating, LastFmRetriever}
+import sh.app.topartist.rating.promodjru.{PromodjRuRating, PromodjRuRatingRetriever}
+import sh.app.topartist.rating.lastfm.{LastFmRating, LastFmRatingRetriever}
 import sh.app.topartist.rating.vkontakteru.{VkontakteRuRating, VkontakteRuRatingRetriever}
 
 
@@ -28,8 +28,8 @@ class KazantipTest extends FunSuite with MockitoSugar {
     20,08 - Groove Armada / ANDY CATO (MAIN STAGE) CLOSING PARTY"""
 
     object Config {
-      val lastFmRetriever = createLastFmRetrieverMock
-      val promodjRuRetriever = createPromodjRuRetrieverMock
+      val lastFmRatingRetriever = createLastFmRetrieverMock
+      val promodjRuRatingRetriever = createPromodjRuRetrieverMock
       val vkontakteRuRatingRetriever = createVkontakteRuRetrieverMock
     }
     val lineUp = new Kazantip(Config).rateArtists(lineUpStr)
@@ -41,8 +41,8 @@ class KazantipTest extends FunSuite with MockitoSugar {
     assert("Pendulum + MC WREK" === sortedArtists(2).name)
   }
 
-  private def createLastFmRetrieverMock: LastFmRetriever = {
-    val retriever = mock[LastFmRetriever]
+  private def createLastFmRetrieverMock: LastFmRatingRetriever = {
+    val retriever = mock[LastFmRatingRetriever]
     when(retriever.retrieveRating("Cosmonaut")).thenReturn(LastFmRating("Cosmonaut", 100))
     when(retriever.retrieveRating("dj Cosmonaut")).thenReturn(LastFmRating("dj Cosmonaut", 0))
     when(retriever.retrieveRating("Pendulum")).thenReturn(LastFmRating("Pendulum", 200))
@@ -56,8 +56,8 @@ class KazantipTest extends FunSuite with MockitoSugar {
     retriever
   }
 
-  private def createPromodjRuRetrieverMock: PromodjRuRetriever = {
-    val retriever = mock[PromodjRuRetriever]
+  private def createPromodjRuRetrieverMock: PromodjRuRatingRetriever = {
+    val retriever = mock[PromodjRuRatingRetriever]
     when(retriever.retrieveRating("Cosmonaut")).thenReturn(PromodjRuRating(1000))
     when(retriever.retrieveRating("Pendulum")).thenReturn(PromodjRuRating(2000))
     when(retriever.retrieveRating("MC WREK")).thenReturn(PromodjRuRating(100))

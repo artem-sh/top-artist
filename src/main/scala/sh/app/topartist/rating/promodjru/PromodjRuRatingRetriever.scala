@@ -6,7 +6,7 @@ import sh.app.topartist.rating.{RatingParserException, RatingRetriever}
 import sh.app.topartist.rating.promodjru.PromodjRuRatingParser._
 
 
-class PromodjRuRetriever(cfg: {val httpClient: Http}) extends RatingRetriever {
+class PromodjRuRatingRetriever(cfg: {val httpClient: Http}) extends RatingRetriever {
   override def retrieveRating(artistName: String): PromodjRuRating = {
     try {
       findDjPageUrl(artistName) match {

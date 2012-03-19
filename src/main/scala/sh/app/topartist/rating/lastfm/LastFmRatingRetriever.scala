@@ -4,7 +4,7 @@ import dispatch._
 import sh.app.topartist.rating.{RatingParserException, RatingRetriever}
 
 
-class LastFmRetriever(cfg: {val httpClient: Http}) extends RatingRetriever {
+class LastFmRatingRetriever(cfg: {val httpClient: Http}) extends RatingRetriever {
   val commonRequestParameters = Map("api_key" -> "d1e661cb4cae16c690443c3bc6cf8465", "format" -> "json")
   val baseRequest = :/("ws.audioscrobbler.com") / "2.0/"
 

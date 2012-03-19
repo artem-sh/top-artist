@@ -1,10 +1,10 @@
 package sh.app.topartist.festival
 
 import sh.app.topartist.festival.parser.Kazantip19LineUpParser
-import sh.app.topartist.rating.lastfm.{LastFmRating, LastFmRetriever}
+import sh.app.topartist.rating.lastfm.{LastFmRating, LastFmRatingRetriever}
 import sh.app.topartist.util.ArtistUtil
 import sh.app.topartist.LineUp
-import sh.app.topartist.rating.promodjru.{PromodjRuRating, PromodjRuRetriever}
+import sh.app.topartist.rating.promodjru.{PromodjRuRating, PromodjRuRatingRetriever}
 import sh.app.topartist.rating.vkontakteru.{VkontakteRuRating, VkontakteRuRatingRetriever}
 
 
@@ -14,16 +14,16 @@ trait FestivalValuer {
 
 
 class Kazantip(cfg: {
-  val lastFmRetriever: LastFmRetriever
-  val promodjRuRetriever: PromodjRuRetriever
+  val lastFmRatingRetriever: LastFmRatingRetriever
+  val promodjRuRatingRetriever: PromodjRuRatingRetriever
   val vkontakteRuRatingRetriever: VkontakteRuRatingRetriever}) extends FestivalValuer {
 
   override def rateArtists(lineUpContent: String): LineUp = {
     val lineUp = new Kazantip19LineUpParser().parseLineUp(lineUpContent)
     lineUp.artists.foreach(artist => {
       ArtistUtil.splitArtists(artist.name).foreach(name => {
-        artist.totalRating.lastFmRating = artist.totalRating.lastFmRating + rateWithLastFm(name, cfg.lastFmRetriever)
-        artist.totalRating.promodjRuRating = artist.totalRating.promodjRuRating + rateWithPromodjRu(name, cfg.promodjRuRetriever)
+        artist.totalRating.lastFmRating = artist.totalRating.lastFmRating + rateWithLastFm(name, cfg.lastFmRatingRetriever)
+        artist.totalRating.promodjRuRating = artist.totalRating.promodjRuRating + rateWithPromodjRu(name, cfg.promodjRuRatingRetriever)
         artist.totalRating.vkontakteRuRating = artist.totalRating.vkontakteRuRating + rateWithVkontakteRu(name, cfg.vkontakteRuRatingRetriever)
       })
     })
@@ -31,7 +31,7 @@ class Kazantip(cfg: {
     lineUp
   }
 
-  private def rateWithLastFm(name: String, lastFmRetriever: LastFmRetriever): LastFmRating = {
+  private def rateWithLastFm(name: String, lastFmRetriever: LastFmRatingRetriever): LastFmRating = {
     println("Trying to rate with last.fm artist " + name)
 
     val djName = if (name.toLowerCase.startsWith("dj")) name else "dj " + name
@@ -49,7 +49,7 @@ class Kazantip(cfg: {
     if (normalizeRating(djLastFmRating, djName) > normalizeRating(lastFmRating, artistName)) djLastFmRating else lastFmRating
   }
 
-  private def rateWithPromodjRu(name: String, retriever: PromodjRuRetriever): PromodjRuRating = {
+  private def rateWithPromodjRu(name: String, retriever: PromodjRuRatingRetriever): PromodjRuRating = {
     println("Trying to rate with promodj.ru artist " + name)
     retriever.retrieveRating(name)
   }
