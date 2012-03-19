@@ -46,12 +46,6 @@
     </dependency>
 
     <dependency>
-      <groupId>javax</groupId>
-      <artifactId>javaee-api</artifactId>
-      <version>6.0</version>
-    </dependency>
-
-    <dependency>
       <groupId>net.databinder</groupId>
       <artifactId>dispatch-http_${scala.version}</artifactId>
       <version>0.8.8</version>
