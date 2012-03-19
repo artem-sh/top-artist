@@ -6,14 +6,10 @@
 	xmlns:h="http://java.sun.com/jsf/html">
 
 <h:head>
-	<title>Line up sorting</title>
+	<title>Put the line up text here</title>
 </h:head>
 <h:body>
-	<h3>Put the line up text here</h3>
-	<h:form>
-		<h:inputText value="#{rawLineUp.content}"/>
-		<h:commandButton value="Process!" action="#{lineUpController.process}"/>
-	</h:form>
-
+	<h1>Processed line up:</h1>
+	<h:outputText value="#{rawLineUp.content}"/>
 </h:body>
 </html>

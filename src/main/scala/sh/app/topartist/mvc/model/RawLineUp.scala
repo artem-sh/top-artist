@@ -5,5 +5,5 @@ import scala.reflect.BeanProperty
 
 @ManagedBean @SessionScoped
 class RawLineUp extends Serializable {
-  @BeanProperty var content = "abcd"
+  @BeanProperty var content = ""
 }
