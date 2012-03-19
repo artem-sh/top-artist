@@ -1,11 +1,13 @@
 package sh.app.topartist.mvc.controller
 
 import javax.faces.bean._
+import sh.app.topartist.Config
 
 
 @ManagedBean @SessionScoped
 class LineUpController extends Serializable {
-	def process(): String = {
-		"processedLineUp"
-	}
+  def process(): String = {
+    Config.kazantip.rateArtists("qaz")
+    "processedLineUp"
+  }
 }
