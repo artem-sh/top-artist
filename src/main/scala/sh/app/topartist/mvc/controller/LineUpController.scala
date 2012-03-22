@@ -1,13 +1,18 @@
 package sh.app.topartist.mvc.controller
 
-import javax.faces.bean._
+import java.io.Serializable
+import javax.enterprise.context.SessionScoped
 import sh.app.topartist.Config
+import sh.app.topartist.mvc.model.RawLineUp
+import javax.inject.{Inject, Named}
 
 
-@ManagedBean @SessionScoped
+@Named @SessionScoped
 class LineUpController extends Serializable {
+	@Inject private var rawLineUp: RawLineUp = null
+
   def process(): String = {
-    Config.kazantip.rateArtists("qaz")
+    Config.kazantip.rateArtists(rawLineUp.getContent())
     "processedLineUp"
   }
 }
