@@ -4,8 +4,11 @@ import lastfm.LastFmRating
 import org.scalatest.FunSuite
 import promodjru.PromodjRuRating
 import sh.app.topartist.rating.vkontakteru.VkontakteRuRating
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
 
 
+@RunWith(classOf[JUnitRunner])
 class TotalRatingTest extends FunSuite {
   val totalRating = new TotalRating
 

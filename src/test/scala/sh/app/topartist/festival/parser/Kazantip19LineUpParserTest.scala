@@ -2,8 +2,11 @@ package sh.app.topartist.festival.parser
 
 import org.scalatest.FunSuite
 import sh.app.topartist.Performance
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
 
 
+@RunWith(classOf[JUnitRunner])
 class Kazantip19LineUpParserTest extends FunSuite {
 
   test("parseLineUp(), incorrect line-up format, no 'when'") {

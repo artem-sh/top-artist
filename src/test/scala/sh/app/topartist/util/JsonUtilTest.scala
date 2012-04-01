@@ -3,8 +3,11 @@ package sh.app.topartist.util
 import org.scalatest.FunSuite;
 import sh.app.topartist.util.JsonUtil._
 import net.liftweb.json.JsonAST.{JInt, JString}
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
 
 
+@RunWith(classOf[JUnitRunner])
 class JsonUtilTest extends FunSuite {
   test("extractStringValue()") {
     assert("testMe" === extractStringValue(JString("testMe")))

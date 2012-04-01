@@ -2,8 +2,11 @@ package sh.app.topartist.util.raisin
 
 import org.scalatest.FunSuite
 import sh.app.topartist.util.raisin.Raisin._
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
 
 
+@RunWith(classOf[JUnitRunner])
 class RaisinTest extends FunSuite {
 
   private class BooleanHolder {

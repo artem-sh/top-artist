@@ -3,8 +3,11 @@ package sh.app.topartist
 import org.scalatest.FunSuite
 import sh.app.topartist.rating.lastfm.LastFmRating
 import sh.app.topartist.rating.promodjru.PromodjRuRating
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
 
 
+@RunWith(classOf[JUnitRunner])
 class ArtistTest extends FunSuite {
   test("name, getter") {
     val artistName = "Кино"

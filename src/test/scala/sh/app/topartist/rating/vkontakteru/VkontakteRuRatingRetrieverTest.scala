@@ -5,7 +5,11 @@ import org.scalatest.mock.MockitoSugar
 import org.mockito.Mockito.when
 import org.mockito.Matchers.any
 import dispatch._
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
 
+
+@RunWith(classOf[JUnitRunner])
 class VkontakteRuRatingRetrieverTest extends FunSuite with MockitoSugar {
   trait TestHttpExecutor extends HttpExecutor {
     type HttpPackage[T] = T

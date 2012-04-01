@@ -4,8 +4,11 @@ import sh.app.topartist.rating.vkontakteru.VkontakteRuRatingParser._
 import org.scalatest.FlatSpec
 import org.scalatest.matchers.ShouldMatchers
 import sh.app.topartist.rating.RatingParserException
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
 
 
+@RunWith(classOf[JUnitRunner])
 class VkontakteRuRatingParserTest extends FlatSpec with ShouldMatchers {
   "VkontakteRuRatingParser" should "throw RatingParserException if no tracks were found" in {
     evaluating {

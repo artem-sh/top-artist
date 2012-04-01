@@ -7,8 +7,11 @@ import scala.io.Source
 import org.scalatest.matchers.ShouldMatchers
 import org.scalatest.FlatSpec
 import sh.app.topartist.rating.RatingParserException
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
 
 
+@RunWith(classOf[JUnitRunner])
 class PromodjRuRatingParserTest extends FlatSpec with ShouldMatchers {
   "PromodjRuRatingParser" should "find dj Loveski url with 'promodj-search-Loveski.htm' on input" in {
     val url = getClass.getResource("/sh/topartist/rating/promodjru/promodj-search-Loveski.htm")

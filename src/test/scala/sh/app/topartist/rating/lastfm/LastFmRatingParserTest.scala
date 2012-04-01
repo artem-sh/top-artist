@@ -3,8 +3,11 @@ package sh.app.topartist.rating.lastfm
 import org.scalatest.FlatSpec
 import org.scalatest.matchers.ShouldMatchers
 import sh.app.topartist.rating.RatingParserException
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
 
 
+@RunWith(classOf[JUnitRunner])
 class LastFmRatingParserTest extends FlatSpec with ShouldMatchers {
   "LastFmRatingParser" should ("return certain rating if artist were found and listeners count presented in json respond") in {
     LastFmRatingParser.parseRating("""

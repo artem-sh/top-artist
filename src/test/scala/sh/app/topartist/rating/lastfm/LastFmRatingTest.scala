@@ -1,8 +1,11 @@
 package sh.app.topartist.rating.lastfm
 
 import org.scalatest.FunSuite
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
 
 
+@RunWith(classOf[JUnitRunner])
 class LastFmRatingTest extends FunSuite {
   test("+") {
     assert(3 === (LastFmRating("name1", 1) + LastFmRating("name2", 2)).listeners)
