@@ -32,14 +32,14 @@
       <version>${scala.version}</version>
     </dependency>
 
-		<!-- JSF -->
+    <!-- JSF -->
     <dependency>
       <groupId>com.sun.faces</groupId>
       <artifactId>jsf-api</artifactId>
       <version>${mojarra.version}</version>
       <scope>compile</scope>
     </dependency>
-		
+
     <dependency>
       <groupId>com.sun.faces</groupId>
       <artifactId>jsf-impl</artifactId>
@@ -47,8 +47,8 @@
       <scope>runtime</scope>
     </dependency>
 
-		<!-- CDI -->
-		<dependency>
+    <!-- CDI -->
+    <dependency>
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-log4j12</artifactId>
       <version>1.6.4</version>
@@ -60,7 +60,7 @@
       <version>1.1.5.Final</version>
     </dependency>
 
-		<!-- The rest -->
+    <!-- The rest -->
     <dependency>
       <groupId>net.databinder</groupId>
       <artifactId>dispatch-http_${scala.version}</artifactId>
@@ -105,6 +105,20 @@
   <build>
     <sourceDirectory>src/main/scala</sourceDirectory>
     <testSourceDirectory>src/test/scala</testSourceDirectory>
+
+    <testResources>
+      <testResource>
+        <directory>src/test/scala</directory>
+        <includes>
+          <include>**/*</include>
+        </includes>
+        <excludes>
+          <exclude>**/*.scala</exclude>
+        </excludes>
+        <filtering>false</filtering>
+      </testResource>
+    </testResources>
+
     <plugins>
       <plugin>
         <groupId>org.scala-tools</groupId>

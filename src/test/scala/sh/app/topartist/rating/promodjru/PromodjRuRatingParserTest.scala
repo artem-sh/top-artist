@@ -14,7 +14,7 @@ import org.scalatest.junit.JUnitRunner
 @RunWith(classOf[JUnitRunner])
 class PromodjRuRatingParserTest extends FlatSpec with ShouldMatchers {
   "PromodjRuRatingParser" should "find dj Loveski url with 'promodj-search-Loveski.htm' on input" in {
-    val url = getClass.getResource("/sh/topartist/rating/promodjru/promodj-search-Loveski.htm")
+    val url = getClass.getResource("promodj-search-Loveski.htm")
     val doc = Jsoup.parse(new File(url.toURI), "UTF-8")
 
     parseDjUrl("loveski", doc).getOrElse(fail("Nothing!")) should equal("http://djloveski.promodj.ru/")
@@ -59,7 +59,7 @@ class PromodjRuRatingParserTest extends FlatSpec with ShouldMatchers {
   }
 
   it should ("return rating cause promorank occures once in a real web page 'djloveski.promodj.ru.htm'") in {
-    val file = Source.fromURL(getClass.getResource("/sh/topartist/rating/promodjru/djloveski.promodj.ru.htm"), "UTF-8")
+    val file = Source.fromURL(getClass.getResource("djloveski.promodj.ru.htm"), "UTF-8")
     try {
       parseRating(file.mkString) should equal(PromodjRuRating(2177))
     } finally {
