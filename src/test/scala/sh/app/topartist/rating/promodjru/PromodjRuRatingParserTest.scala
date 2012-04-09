@@ -1,21 +1,19 @@
 package sh.app.topartist.rating.promodjru
 
 import org.jsoup.Jsoup
-import java.io.File
 import PromodjRuRatingParser._
-import scala.io.Source
 import org.scalatest.matchers.ShouldMatchers
 import org.scalatest.FlatSpec
 import sh.app.topartist.rating.RatingParserException
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
+import sh.app.topartist.util.ResourceUtil.resourceNextToMe
 
 
 @RunWith(classOf[JUnitRunner])
 class PromodjRuRatingParserTest extends FlatSpec with ShouldMatchers {
   "PromodjRuRatingParser" should "find dj Loveski url with 'promodj-search-Loveski.htm' on input" in {
-    val url = getClass.getResource("promodj-search-Loveski.htm")
-    val doc = Jsoup.parse(new File(url.toURI), "UTF-8")
+    val doc = Jsoup.parse(resourceNextToMe("promodj-search-Loveski.htm").mkString)
 
     parseDjUrl("loveski", doc).getOrElse(fail("Nothing!")) should equal("http://djloveski.promodj.ru/")
   }
@@ -59,11 +57,6 @@ class PromodjRuRatingParserTest extends FlatSpec with ShouldMatchers {
   }
 
   it should ("return rating cause promorank occures once in a real web page 'djloveski.promodj.ru.htm'") in {
-    val file = Source.fromURL(getClass.getResource("djloveski.promodj.ru.htm"), "UTF-8")
-    try {
-      parseRating(file.mkString) should equal(PromodjRuRating(2177))
-    } finally {
-      file.close()
-    }
+    parseRating(resourceNextToMe("djloveski.promodj.ru.htm").mkString) should equal(PromodjRuRating(2177))
   }
 }
