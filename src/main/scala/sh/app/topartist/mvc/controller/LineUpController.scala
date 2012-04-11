@@ -9,7 +9,7 @@ import javax.enterprise.context.RequestScoped
 
 @Named @RequestScoped
 class LineUpController extends Serializable {
-	@Inject private var rawLineUp: RawLineUp = null
+	@Inject private var rawLineUp: RawLineUp = _
 
   def process(): String = {
     Config.kazantip.rateArtists(rawLineUp.getContent())

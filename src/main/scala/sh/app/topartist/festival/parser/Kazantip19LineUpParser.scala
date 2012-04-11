@@ -8,9 +8,9 @@ import sh.app.topartist.LineUp
 
 
 class Kazantip19LineUpParser extends RegexParsers {
-  private var _artistName: String = null
-  private var _when: String = null
-  private var _where: String = null
+  private var _artistName: String = _
+  private var _when: String = _
+  private var _where: String = _
 
   override def skipWhitespace = false
 
