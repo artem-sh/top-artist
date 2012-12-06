@@ -83,16 +83,19 @@
 
   <h:form>
     <!--<h:inputHidden id="chart_input_data" value="#{myBean.valueOfChart}" />-->
-    <h:commandButton value="Submit" action="#{lineUpController.process}">
-      <f:ajax execute="@form" render="@form" />
+    <h:commandButton value="Submit">
+      <f:ajax render="count" listener="#{lineUpController.countListener}"/>
     </h:commandButton>
+    <h:outputText id="count" value="#{lineUpController.count}"/>
   </h:form>
 
 
   <h:form>
     <h:inputText value="#{artistsForm.artist1}"/>
     <h:inputText value="#{artistsForm.artist2}"/>
-    <h:commandButton value="Process!" action="#{lineUpController.process}"/>
+    <h:commandButton value="Process!">
+      <f:ajax listener="#{lineUpController.countListener}"/>
+    </h:commandButton>
   </h:form>
 
 </h:body>
