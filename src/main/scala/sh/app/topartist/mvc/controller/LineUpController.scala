@@ -28,10 +28,6 @@ class LineUpController extends Serializable {
     "processedLineUp"
   }
 
-  def process() {
-    "processedLineUp"
-  }
-
   def countListener(event: AjaxBehaviorEvent) {
     count = count + 1
   }
