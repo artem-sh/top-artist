@@ -94,7 +94,7 @@
     <h:inputText value="#{artistsForm.artist1}"/>
     <h:inputText value="#{artistsForm.artist2}"/>
     <h:commandButton value="Process!">
-      <f:ajax listener="#{lineUpController.countListener}"/>
+      <f:ajax execute="@form" render="@form" listener="#{lineUpController.compareArtists}"/>
     </h:commandButton>
   </h:form>
 

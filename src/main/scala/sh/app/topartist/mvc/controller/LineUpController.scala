@@ -35,4 +35,10 @@ class LineUpController extends Serializable {
   def countListener(event: AjaxBehaviorEvent) {
     count = count + 1
   }
+
+  def compareArtists(event: AjaxBehaviorEvent) {
+    val artist: String = artistsForm.getArtist1
+    artistsForm.setArtist1(artistsForm.getArtist2)
+    artistsForm.setArtist2(artist)
+  }
 }
