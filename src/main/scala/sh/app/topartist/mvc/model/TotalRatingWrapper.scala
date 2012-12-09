@@ -2,14 +2,13 @@ package sh.app.topartist.mvc.model
 
 import sh.app.topartist.rating.TotalRating
 
-import javax.enterprise.context.RequestScoped
-import javax.inject.Named
-import reflect.BeanProperty
-import sh.app.topartist.rating.lastfm.LastFmRating
 
-class TotalRatingWrapper(artist: String, totalRating: TotalRating) {
+class TotalRatingWrapper(artist: String, lastFmListeners: Int, promodjRuPromoRank: Int, vkontakteRuTracksCount: Int) {
   def getArtist = artist
-  def getLastFmRating = totalRating.lastFmRating.listeners
-  def getPromodjRuRating = totalRating.promodjRuRating.promoRank
-  def getVkontakteRuRating = totalRating.vkontakteRuRating.tracksCount
+  def getLastFmRating = lastFmListeners
+  def getPromodjRuRating = promodjRuPromoRank
+  def getVkontakteRuRating = vkontakteRuTracksCount
+
+  def this(artist: String, rating: TotalRating) =
+    this(artist, rating.lastFmRating.listeners, rating.promodjRuRating.promoRank, rating.vkontakteRuRating.tracksCount)
 }

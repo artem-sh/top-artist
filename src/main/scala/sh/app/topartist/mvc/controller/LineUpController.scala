@@ -30,6 +30,9 @@ class LineUpController extends Serializable {
 
   def countListener(event: AjaxBehaviorEvent) {
     count = count + 1
+    import collection.JavaConversions._
+    artistsRating.setRatings(List(
+      new TotalRatingWrapper("artist1", 100, 100, 100), new TotalRatingWrapper("artist2", 200, 200, 200)))
   }
 
   def compareArtists(event: AjaxBehaviorEvent) {

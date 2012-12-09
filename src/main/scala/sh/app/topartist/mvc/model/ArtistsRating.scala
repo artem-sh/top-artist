@@ -1,12 +1,12 @@
 package sh.app.topartist.mvc.model
 
 
-import javax.enterprise.context.RequestScoped
+import javax.enterprise.context.SessionScoped
 import javax.inject.Named
 import reflect.BeanProperty
 
 @Named
-@RequestScoped
+@SessionScoped
 class ArtistsRating extends Serializable {
-  @BeanProperty var ratings: List[TotalRatingWrapper] = _
+  @BeanProperty var ratings: java.util.List[TotalRatingWrapper] = _
 }
