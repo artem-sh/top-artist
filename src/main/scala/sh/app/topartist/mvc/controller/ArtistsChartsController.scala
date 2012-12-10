@@ -10,9 +10,8 @@ import javax.faces.event.AjaxBehaviorEvent
 import reflect.BeanProperty
 
 
-@Named
-@SessionScoped
-class LineUpController extends Serializable {
+@Named @SessionScoped
+class ArtistsChartsController extends Serializable {
   @Inject private var artistsForm: ArtistsForm = _
   @Inject private var charts: Charts = _
   @BeanProperty var count: Int = 0

@@ -88,16 +88,16 @@
   <div id="container2" style="width: 100%; height: 200px"></div>
 
   <h:commandButton value="Submit">
-    <f:ajax render="count uiCharts" listener="#{lineUpController.countListener}"/>
+    <f:ajax render="count uiCharts" listener="#{artistsChartsController.countListener}"/>
   </h:commandButton>
-  <h:outputText id="count" value="#{lineUpController.count}"/>
+  <h:outputText id="count" value="#{artistsChartsController.count}"/>
 
 
   <h:form>
     <h:inputText value="#{artistsForm.artist1}"/>
     <h:inputText value="#{artistsForm.artist2}"/>
     <h:commandButton value="Process!">
-      <f:ajax execute="@form" render="@form" listener="#{lineUpController.compareArtists}"/>
+      <f:ajax execute="@form" render="@form" listener="#{artistsChartsController.compareArtists}"/>
     </h:commandButton>
   </h:form>
 
