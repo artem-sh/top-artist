@@ -4,13 +4,15 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:c="http://java.sun.com/jsp/jstl/core">
+      xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:body>
   <ui:composition>
-    <c:forEach items="#{artistsRating.ratings}" var="rating" varStatus="loop">
-      loop = ${loop.index}
-    </c:forEach>
+    #{chart.dataProvider} <br/>
+    #{chart.unitName} <br/>
+    #{chart.artist1} <br/>
+    #{chart.artist1Rating} <br/>
+    #{chart.artist2} <br/>
+    #{chart.artist2Rating} <br/>
   </ui:composition>
 </h:body>
 </html>

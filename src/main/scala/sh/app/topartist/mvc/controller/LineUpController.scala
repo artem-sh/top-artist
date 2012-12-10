@@ -2,7 +2,7 @@ package sh.app.topartist.mvc.controller
 
 import java.io.Serializable
 import sh.app.topartist.Config
-import sh.app.topartist.mvc.model.{ArtistsRating, TotalRatingWrapper, ArtistsForm}
+import sh.app.topartist.mvc.model._
 import javax.inject.{Inject, Named}
 import javax.enterprise.context.SessionScoped
 import sh.app.topartist.rating.TotalRating
@@ -14,7 +14,7 @@ import reflect.BeanProperty
 @SessionScoped
 class LineUpController extends Serializable {
   @Inject private var artistsForm: ArtistsForm = _
-  @Inject private var artistsRating: ArtistsRating = _
+  @Inject private var charts: Charts = _
   @BeanProperty var count: Int = 0
 
   def process_old(): String = {
@@ -31,8 +31,7 @@ class LineUpController extends Serializable {
   def countListener(event: AjaxBehaviorEvent) {
     count = count + 1
     import collection.JavaConversions._
-    artistsRating.setRatings(List(
-      new TotalRatingWrapper("artist1", 100, 100, 100), new TotalRatingWrapper("artist2", 200, 200, 200)))
+    charts.charts = List(new Chart("vk.com", "tracks", "a1", 100, "a2", 150), new Chart("last.fm", "listeners", "b1", 200, "b2", 250))
   }
 
   def compareArtists(event: AjaxBehaviorEvent) {
