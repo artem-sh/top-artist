@@ -13,43 +13,34 @@
 
     <script type="text/javascript">
       new Highcharts.Chart({
-          chart: {
-            renderTo: '#{containerId}',
-            type: 'bar'
-          },
+        chart: {
+          renderTo: '#{containerId}',
+          type: 'bar'
+        },
+        title: {
+          text: '#{chart.dataProvider}'
+        },
+        xAxis: {
+          categories: ['#{chart.dataProvider}'],
+          labels: {enabled: false}
+        },
+        yAxis: {
           title: {
-            text: 'vk.com'
+            text: '#{chart.unitName}'
+          }
+        },
+        series: [
+          {
+            name: '#{chart.artist1}',
+            data: [#{chart.artist1Rating}]
           },
-          xAxis: {
-            categories: ['vk.com'],
-            labels: {enabled: false}
-          },
-          yAxis: {
-            title: {
-              text: 'Tracks'
-            }
-          },
-          series: [
-            {
-              name: 'Jane',
-              data: [1]
-            },
-            {
-              name: 'John',
-              data: [5]
-            }
-          ]
-        });
+          {
+            name: '#{chart.artist2}',
+            data: [#{chart.artist2Rating}]
+          }
+        ]
+      });
     </script>
-
-    #{containerId} <br/>
-    #{chart.dataProvider} <br/>
-    #{chart.unitName} <br/>
-    #{chart.artist1} <br/>
-    #{chart.artist1Rating} <br/>
-    #{chart.artist2} <br/>
-    #{chart.artist2Rating} <br/>
-
   </ui:composition>
 </h:body>
 </html>

@@ -27,12 +27,12 @@ class ArtistsChartsController extends Serializable {
   }
 
   def compareArtists(event: AjaxBehaviorEvent) {
+    import collection.JavaConversions._
+    charts.charts = List(new Chart("vk.com", "tracks", artistsForm.artist1, 100, artistsForm.artist2, 150),
+      new Chart("last.fm", "listeners", artistsForm.artist1, 200, artistsForm.artist2, 250))
+
     val artist: String = artistsForm.getArtist1
     artistsForm.setArtist1(artistsForm.getArtist2)
     artistsForm.setArtist2(artist)
-
-    import collection.JavaConversions._
-    charts.charts = List(new Chart("vk.com", "tracks", artistsForm.getArtist1, 100, artistsForm.getArtist2, 150),
-      new Chart("last.fm", "listeners", "b1", 200, "b2", 250))
   }
 }
