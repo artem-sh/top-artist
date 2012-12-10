@@ -14,7 +14,6 @@ import reflect.BeanProperty
 class ArtistsChartsController extends Serializable {
   @Inject private var artistsForm: ArtistsForm = _
   @Inject private var charts: Charts = _
-  @BeanProperty var count: Int = 0
 
   def process_old(): String = {
     //    artistsRating.rating1 = new TotalRatingWrapper(artistsForm.getArtist1, Config.totalRatingRetriever.retrieveRating(artistsForm.getArtist1))
@@ -27,15 +26,13 @@ class ArtistsChartsController extends Serializable {
     "processedLineUp"
   }
 
-  def countListener(event: AjaxBehaviorEvent) {
-    count = count + 1
-    import collection.JavaConversions._
-    charts.charts = List(new Chart("vk.com", "tracks", "a1", 100, "a2", 150), new Chart("last.fm", "listeners", "b1", 200, "b2", 250))
-  }
-
   def compareArtists(event: AjaxBehaviorEvent) {
     val artist: String = artistsForm.getArtist1
     artistsForm.setArtist1(artistsForm.getArtist2)
     artistsForm.setArtist2(artist)
+
+    import collection.JavaConversions._
+    charts.charts = List(new Chart("vk.com", "tracks", artistsForm.getArtist1, 100, artistsForm.getArtist2, 150),
+      new Chart("last.fm", "listeners", "b1", 200, "b2", 250))
   }
 }
