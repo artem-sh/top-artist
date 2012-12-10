@@ -7,12 +7,52 @@
       xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:body>
   <ui:composition>
+    <h:outputScript library="js" name="highcharts.js" target="head"/>
+
+    <ui:param name="containerId" value='#{"container".concat(index)}'/>
+
+    <div id="#{containerId}" style="width: 100%; height: 200px"></div>
+
+    <script type="text/javascript">
+      var ch1 = new Highcharts.Chart({
+          chart: {
+            renderTo: '#{containerId}',
+            type: 'bar'
+          },
+          title: {
+            text: 'vk.com'
+          },
+          xAxis: {
+            categories: ['vk.com'],
+            labels: {enabled: false}
+          },
+          yAxis: {
+            title: {
+              text: 'Tracks'
+            }
+          },
+          series: [
+            {
+              name: 'Jane',
+              data: [1]
+            },
+            {
+              name: 'John',
+              data: [5]
+            }
+          ]
+        });
+    </script>
+
+    #{containerId} <br/>
     #{chart.dataProvider} <br/>
     #{chart.unitName} <br/>
     #{chart.artist1} <br/>
     #{chart.artist1Rating} <br/>
     #{chart.artist2} <br/>
     #{chart.artist2Rating} <br/>
+
+
   </ui:composition>
 </h:body>
 </html>

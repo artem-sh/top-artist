@@ -9,84 +9,13 @@
 <h:head>
   <title>Artist comparison</title>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
-  <script src="/js/highcharts.js" type="text/javascript"></script>
-  <script type="text/javascript">
-    var chart1; // globally available
-    $(document).ready(function () {
-      chart1 = new Highcharts.Chart({
-        chart: {
-          renderTo: 'container',
-          type: 'bar'
-        },
-        title: {
-          text: 'vk.com'
-        },
-        xAxis: {
-          categories: ['vk.com'],
-          labels: {enabled: false}
-        },
-        yAxis: {
-          title: {
-            text: 'Tracks'
-          }
-        },
-        series: [
-          {
-            name: 'Jane',
-            data: [1]
-          },
-          {
-            name: 'John',
-            data: [5]
-          }
-        ]
-      });
-    });
-  </script>
-  <script type="text/javascript">
-    var chart2; // globally available
-    $(document).ready(function () {
-      chart2 = new Highcharts.Chart({
-        chart: {
-          renderTo: 'container2',
-          type: 'bar'
-        },
-        title: {
-          text: 'Artist comparison'
-        },
-        xAxis: {
-          categories: ['last.fm']
-        },
-        yAxis: {
-          title: {
-            text: 'Fruit eaten'
-          }
-        },
-        series: [
-          {
-            name: 'Jane',
-            data: [1]
-          },
-          {
-            name: 'John',
-            data: [5]
-          }
-        ]
-      });
-    });
-  </script>
 </h:head>
 <h:body>
-  <h:panelGrid id="uiCharts">
-    <c:forEach items="#{charts.charts}" var="chart">
-      <sh:chart chart="#{chart}"/>
+  <h:panelGroup id="uiCharts">
+    <c:forEach items="#{charts.charts}" var="chart" varStatus="i">
+      <sh:chart chart="#{chart}" index="#{i.index}"/>
     </c:forEach>
-  </h:panelGrid>
-
-
-  <div id="container" style="width: 100%; height: 200px"></div>
-  <div id="container2" style="width: 100%; height: 200px"></div>
-
+  </h:panelGroup>
 
   <h:form>
     <h:inputText value="#{artistsForm.artist1}"/>
