@@ -17,15 +17,15 @@
           type: 'bar'
         },
         title: {
-          text: '#{chart.dataProvider}'
+          text: '#{provider.name}'
         },
         xAxis: {
-          categories: ['#{chart.dataProvider}'],
+          categories: ['#{provider.name}'],
           labels: {enabled: false}
         },
         yAxis: {
           title: {
-            text: '#{chart.unitName}'
+            text: '#{provider.unitName}'
           }
         },
         <c:if test="#{index != 0}">
@@ -34,14 +34,12 @@
         },
         </c:if>
         series: [
-          {
-            name: '#{chart.artist1}',
-            data: [#{chart.artist1Rating}]
-          },
-          {
-            name: '#{chart.artist2}',
-            data: [#{chart.artist2Rating}]
-          }
+          <c:forEach items="#{ratings}" var="rating">
+            {
+              name: '#{rating.artist}',
+              data: [#{rating.rating}]
+            },
+          </c:forEach>
         ]
       });
     </script>

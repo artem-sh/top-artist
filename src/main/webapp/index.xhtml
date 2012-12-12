@@ -13,8 +13,8 @@
 </h:head>
 <h:body>
   <h:panelGroup id="uiCharts">
-    <c:forEach items="#{charts.charts}" var="chart" varStatus="i">
-      <sh:chart chart="#{chart}" index="#{i.index}"/>
+    <c:forEach items="#{charts.charts}" var="entry" varStatus="i">
+      <sh:chart provider="#{entry.key}" ratings="#{entry.value}" index="#{i.index}"/>
     </c:forEach>
   </h:panelGroup>
 
