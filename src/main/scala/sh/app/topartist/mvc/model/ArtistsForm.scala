@@ -7,6 +7,5 @@ import javax.enterprise.context.SessionScoped
 
 @Named @SessionScoped
 class ArtistsForm extends Serializable {
-  @BeanProperty var artist1 = ""
-  @BeanProperty var artist2 = ""
+  @BeanProperty var artists = ""
 }

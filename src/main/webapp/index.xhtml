@@ -19,8 +19,7 @@
   </h:panelGroup>
 
   <h:form>
-    <h:inputText value="#{artistsForm.artist1}"/>
-    <h:inputText value="#{artistsForm.artist2}"/>
+    <h:inputTextarea value="#{artistsForm.artists}"/>
     <h:commandButton value="Process!">
       <f:ajax execute="@form" render="@form :uiCharts" listener="#{artistsChartsController.compareArtists}"/>
     </h:commandButton>
