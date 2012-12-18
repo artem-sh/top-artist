@@ -8,7 +8,8 @@ import sh.app.topartist.rating.vkontakteru.VkontakteRuRatingRetriever
 import sh.app.topartist.rating.TotalRatingRetriever
 
 
-object Config {
+object Context {
+  lazy val config = new Config
   lazy val httpClient = new Http
   lazy val lastFmRatingRetriever = new LastFmRatingRetriever(this)
   lazy val promodjRuRatingRetriever = new PromodjRuRatingRetriever(this)

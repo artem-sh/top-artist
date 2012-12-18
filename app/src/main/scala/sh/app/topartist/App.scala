@@ -7,9 +7,9 @@ object App extends scala.App {
       20,08 - Groove Armada / ANDY CATO (MAIN STAGE) CLOSING PARTY"""
 
   try {
-    val lineUp = Config.kazantip.rateArtists(lineUpStr)
+    val lineUp = Context.kazantip.rateArtists(lineUpStr)
     lineUp.artists.sortWith(_ > _).foreach(println)
   } finally {
-    Config.httpClient.shutdown()
+    Context.httpClient.shutdown()
   }
 }
