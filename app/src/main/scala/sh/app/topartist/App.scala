@@ -1,5 +1,7 @@
 package sh.app.topartist
 
+import core.Context
+
 
 object App extends scala.App {
   val lineUpStr = """31,07 - Cosmonaut (SUNSET Point )

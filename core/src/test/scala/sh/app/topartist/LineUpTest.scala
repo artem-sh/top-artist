@@ -1,4 +1,4 @@
-package sh.app.topartist
+package sh.app.topartist.core
 
 import org.scalatest.FunSuite
 import org.junit.runner.RunWith

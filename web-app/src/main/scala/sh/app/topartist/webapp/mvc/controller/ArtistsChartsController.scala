@@ -1,14 +1,14 @@
 package sh.app.topartist.webapp.mvc.controller
 
 import java.io.Serializable
-import sh.app.topartist.util.CollectionsUtil.addValueToListInMap
-import sh.app.topartist.mvc.model._
-import sh.app.topartist.Context
+import sh.app.topartist.core.util.CollectionsUtil.addValueToListInMap
+import sh.app.topartist.webapp.mvc.model._
 import javax.inject.{Inject, Named}
 import javax.enterprise.context.SessionScoped
-import sh.app.topartist.rating.TotalRating
+import sh.app.topartist.core.rating.TotalRating
 import javax.faces.event.AjaxBehaviorEvent
 import reflect.BeanProperty
+import sh.app.topartist.core.Context
 
 
 @Named @SessionScoped
