@@ -1,4 +1,4 @@
-package sh.app.topartist.mvc.model
+package sh.app.topartist.webapp.mvc.model
 
 import scala.reflect.BeanProperty
 import javax.inject.Named

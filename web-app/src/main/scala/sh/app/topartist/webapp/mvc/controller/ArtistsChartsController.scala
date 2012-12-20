@@ -1,4 +1,4 @@
-package sh.app.topartist.mvc.controller
+package sh.app.topartist.webapp.mvc.controller
 
 import java.io.Serializable
 import sh.app.topartist.util.CollectionsUtil.addValueToListInMap

@@ -1,4 +1,4 @@
-package sh.app.topartist.mvc.model
+package sh.app.topartist.webapp.mvc.model
 
 import javax.enterprise.context.SessionScoped
 import javax.inject.Named
