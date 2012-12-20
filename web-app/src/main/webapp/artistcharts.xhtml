@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core" xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xmlns:sh="http://sh.app/top-artist">
+
+<f:metadata>
+  <f:viewParam name="code" value="#{artistsChartsController.vkAuthCode}"/>
+</f:metadata>
+<h:head>
+  <title>Artist comparison</title>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+  <script src="/js/highcharts.js" type="text/javascript"></script>
+</h:head>
+<h:body>
+  <h:panelGroup id="uiCharts">
+    <c:forEach items="#{charts.charts}" var="entry" varStatus="i">
+      <sh:chart provider="#{entry.key}" ratings="#{entry.value}" index="#{i.index}"/>
+    </c:forEach>
+  </h:panelGroup>
+
+  <h:form>
+    <h:inputTextarea value="#{artistsForm.artists}"/>
+    <h:commandButton value="Process!">
+      <f:ajax execute="@form" render="@form :uiCharts" listener="#{artistsChartsController.compareArtists}"/>
+    </h:commandButton>
+  </h:form>
+
+</h:body>
+</html>
