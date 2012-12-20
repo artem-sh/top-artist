@@ -1,6 +1,6 @@
-package sh.app.topartist
+package sh.app.topartist.app
 
-import core.Context
+import sh.app.topartist.core.Context
 
 
 object App extends scala.App {
