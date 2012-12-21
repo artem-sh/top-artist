@@ -6,6 +6,7 @@ import sh.app.topartist.core.util.ArtistUtil
 import sh.app.topartist.core.rating.promodjru.{PromodjRuRating, PromodjRuRatingRetriever}
 import sh.app.topartist.core.rating.vkontakteru.{VkontakteRuRating, VkontakteRuRatingRetriever}
 import sh.app.topartist.core.LineUp
+import sh.app.topartist.core.rating.SessionData
 
 
 trait FestivalValuer {
@@ -36,11 +37,11 @@ class Kazantip(cfg: {
 
     val djName = if (name.toLowerCase.startsWith("dj")) name else "dj " + name
     println("Trying to search artist (as dj)" + djName)
-    val djLastFmRating = lastFmRetriever.retrieveRating(djName)
+    val djLastFmRating = lastFmRetriever.retrieveRating(djName, SessionData(""))
 
     val artistName = if (name.toLowerCase.startsWith("dj")) name.drop(2) else name
     println("Trying to search artist (simply)" + artistName)
-    val lastFmRating = lastFmRetriever.retrieveRating(name)
+    val lastFmRating = lastFmRetriever.retrieveRating(name, SessionData(""))
 
     def normalizeRating(rating: LastFmRating, name: String): LastFmRating = {
       if (name.equalsIgnoreCase(rating.foundName)) rating else LastFmRating.Unknown
@@ -51,11 +52,11 @@ class Kazantip(cfg: {
 
   private def rateWithPromodjRu(name: String, retriever: PromodjRuRatingRetriever): PromodjRuRating = {
     println("Trying to rate with promodj.ru artist " + name)
-    retriever.retrieveRating(name)
+    retriever.retrieveRating(name, SessionData(""))
   }
 
   private def rateWithVkontakteRu(name: String, retriever: VkontakteRuRatingRetriever): VkontakteRuRating = {
     println("Trying to rate with vkontakte.ru artist " + name)
-    retriever.retrieveRating(name)
+    retriever.retrieveRating(name, SessionData(""))
   }
 }

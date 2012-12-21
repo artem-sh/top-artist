@@ -1,4 +1,4 @@
-package sh.app.topartist.core
+package sh.app.topartist.webapp
 
 class Config {
   private val properties = new java.util.Properties()

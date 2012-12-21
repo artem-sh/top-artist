@@ -1,11 +1,11 @@
-package sh.app.topartist.core
+package sh.app.topartist.webapp
 
 import dispatch.Http
-import festival.Kazantip
-import rating.TotalRatingRetriever
-import rating.vkontakteru.VkontakteRuRatingRetriever
 import sh.app.topartist.core.rating.lastfm.LastFmRatingRetriever
 import sh.app.topartist.core.rating.promodjru.PromodjRuRatingRetriever
+import sh.app.topartist.core.rating.vkontakteru.VkontakteRuRatingRetriever
+import sh.app.topartist.core.rating.TotalRatingRetriever
+import sh.app.topartist.core.festival.Kazantip
 
 
 object Context {

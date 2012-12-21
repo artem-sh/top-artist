@@ -7,7 +7,8 @@
       xmlns:sh="http://sh.app/top-artist">
 
 <f:metadata>
-  <f:viewParam name="code" value="#{artistsChartsController.vkAuthCode}"/>
+  <f:viewParam name="code" value="#{vkontakteRuAuthenticator.vkAuthCode}"/>
+  <f:event type="preRenderView" listener="#{vkontakteRuAuthenticator.authenticate}" />
 </f:metadata>
 <h:head>
   <title>Artist comparison</title>

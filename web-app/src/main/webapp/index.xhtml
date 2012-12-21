@@ -2,19 +2,14 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html">
 
 <h:head>
-  <title>vk.com details</title>
+  <title>Login into vk.com</title>
 </h:head>
 <h:body>
-  <h:outputLink value="https://oauth.vk.com/authorize">
+  <h:outputLink value="#{vkontakteRuAuthenticator.vkAuthCodeRequestUrl}">
     <h:outputText value="Login into vk.com"/>
-    <f:param name="client_id" value="2726605"/>
-    <f:param name="scope" value="audio"/>
-    <f:param name="redirect_uri" value="http://localhost:8080/artistchars.xhtml"/>
-    <f:param name="response_type" value="code"/>
   </h:outputLink>
 </h:body>
 </html>

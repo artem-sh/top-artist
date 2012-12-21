@@ -11,11 +11,11 @@ class TotalRatingRetriever(cfg: {
   extends RatingRetriever {
 
 
-  override def retrieveRating(artistName: String):TotalRating = {
+  override def retrieveRating(artistName: String, sessionData: SessionData):TotalRating = {
     val rating = new TotalRating
-    rating.lastFmRating = cfg.lastFmRatingRetriever.retrieveRating(artistName)
-    rating.promodjRuRating = cfg.promodjRuRatingRetriever.retrieveRating(artistName)
-    rating.vkontakteRuRating = cfg.vkontakteRuRatingRetriever.retrieveRating(artistName)
+    rating.lastFmRating = cfg.lastFmRatingRetriever.retrieveRating(artistName, sessionData)
+    rating.promodjRuRating = cfg.promodjRuRatingRetriever.retrieveRating(artistName, sessionData)
+    rating.vkontakteRuRating = cfg.vkontakteRuRatingRetriever.retrieveRating(artistName, sessionData)
     rating
   }
 }
