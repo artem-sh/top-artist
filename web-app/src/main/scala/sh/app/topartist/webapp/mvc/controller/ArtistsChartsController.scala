@@ -6,14 +6,14 @@ import javax.inject.{Inject, Named}
 import sh.app.topartist.core.rating.{SessionData, TotalRating}
 import javax.faces.event.AjaxBehaviorEvent
 import sh.app.topartist.webapp.{WebAppSessionData, Context}
-import javax.faces.bean.ViewScoped
+import javax.enterprise.context.RequestScoped
 
 
-@Named @ViewScoped
+@Named @RequestScoped
 class ArtistsChartsController extends Serializable {
   @Inject private var artistsForm: ArtistsForm = _
   @Inject private var charts: Charts = _
-  @Inject private var webAppSessionData: WebAppSessionData = _
+  @Inject var webAppSessionData: WebAppSessionData = _
 
   def compareArtists(event: AjaxBehaviorEvent) {
     val ratings = artistsForm.artists.split("\n").map(a =>

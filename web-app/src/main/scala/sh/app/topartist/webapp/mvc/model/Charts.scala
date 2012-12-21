@@ -1,8 +1,8 @@
 package sh.app.topartist.webapp.mvc.model
 
-import javax.enterprise.context.SessionScoped
 import javax.inject.Named
 import reflect.BeanProperty
+import javax.enterprise.context.RequestScoped
 
 class RatingProvider(_name: String, _unitName: String) {
   @BeanProperty val name = _name
@@ -20,7 +20,7 @@ class ArtistRating(_artist: String, _rating: Int) {
   @BeanProperty val rating = _rating
 }
 
-@Named @SessionScoped
+@Named @RequestScoped
 class Charts extends Serializable {
   import collection.JavaConversions._
   @BeanProperty val charts: java.util.Map[RatingProvider, java.util.List[ArtistRating]] = collection.mutable.Map.empty[RatingProvider, java.util.List[ArtistRating]]
