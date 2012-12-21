@@ -3,7 +3,6 @@ package sh.app.topartist.core.rating.lastfm
 import org.scalatest.FunSuite
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import sh.app.topartist.core.rating.lastfm.LastFmRating
 
 
 @RunWith(classOf[JUnitRunner])

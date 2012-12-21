@@ -8,7 +8,7 @@ class VkontakteRuRatingRetriever(cfg: {val httpClient: Http}) extends RatingRetr
   override def retrieveRating(artistName: String, sessionData: SessionData): VkontakteRuRating = {
     val request = url("https://api.vk.com/method/audio.search") <<? List(
       ("count", "1"),
-      ("access_token", sessionData.vkontakteRuAccessToken),
+      ("access_token", sessionData.vkontakteRuAccessToken.get),
       ("q", Request.encode_%(artistName)))
     try {
       VkontakteRuRatingParser.parseRating(cfg.httpClient(request as_str))

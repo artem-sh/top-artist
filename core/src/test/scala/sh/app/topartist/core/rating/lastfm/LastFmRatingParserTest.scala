@@ -5,7 +5,6 @@ import org.scalatest.matchers.ShouldMatchers
 import sh.app.topartist.core.rating.RatingParserException
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import sh.app.topartist.core.rating.lastfm.{LastFmRating, LastFmRatingParser}
 
 
 @RunWith(classOf[JUnitRunner])

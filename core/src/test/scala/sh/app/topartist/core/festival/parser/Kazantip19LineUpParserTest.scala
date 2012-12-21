@@ -4,7 +4,6 @@ import org.scalatest.FunSuite
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 import sh.app.topartist.core.Performance
-import sh.app.topartist.core.festival.parser.Kazantip19LineUpParser
 
 
 @RunWith(classOf[JUnitRunner])

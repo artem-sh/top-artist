@@ -3,7 +3,6 @@ package sh.app.topartist.core.util.raisin
 import org.scalatest.FunSuite
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import sh.app.topartist.core.util.raisin.Disposable
 import sh.app.topartist.core.util.raisin.Raisin._
 
 
